@@ -10,7 +10,7 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Navigate to="/dashboard" replace />}></Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
-        <Route index element={<Navigate to={"overview"} replace />}></Route>
+        <Route index element={<Navigate to="overview" replace />}></Route>
         /* default dashboard page */
         <Route path="overview" element={<Overview />} />
         <Route path="products" element={<Products />} />
