@@ -34,7 +34,7 @@ export const mapDashboardStats = (stats) => {
       title: "Products",
       value: stats.products.value,
       icon: "🛒",
-      trend: stats.products.warning,
+      trend: { change: stats.products.warning },
     },
   ];
 };
