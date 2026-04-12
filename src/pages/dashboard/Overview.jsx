@@ -1,7 +1,10 @@
 import React from "react";
 import StatCard from "../../components/ui/StatCard";
+import { mapDashboardStats } from "../../data/mappers/dashboardMapper";
+import { dashboardStats } from "../../data/dashboard";
 
 const Overview = () => {
+  const stats = mapDashboardStats(dashboardStats);
   return (
     <div>
       {/* Header */}
@@ -13,25 +16,18 @@ const Overview = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        <StatCard
-          title="Revenue"
-          value="$12,500"
-          icon="💰"
-          trend="↑ +8% this week"
-        />
-        <StatCard
-          title="Orders"
-          value="320"
-          icon="📦"
-          trend="↑ +8% this week"
-        />
-        <StatCard title="Users" value="1,240" icon="👤" trend="↑ +5% growth" />
-        <StatCard
-          title="Products"
-          value="58"
-          icon="🛒"
-          trend="↑ +8% this week"
-        />
+        {stats.map((stat, index) => {
+          return (
+            <StatCard
+              key={index}
+              title={stat.title}
+              value={stat.value}
+              icon={stat.icon}
+              change={stat.trend.change}
+              label={stat.trend.label}
+            />
+          );
+        })}
       </div>
 
       {/* Chart */}
