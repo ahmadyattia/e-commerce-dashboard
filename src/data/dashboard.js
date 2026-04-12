@@ -3,8 +3,7 @@ export const dashboardStats = {
     value: 12500,
     currency: "USD",
     trend: {
-      value: 12,
-      direction: "up",
+      change: 12,
       label: "this month",
     },
   },
@@ -12,8 +11,7 @@ export const dashboardStats = {
   orders: {
     value: 320,
     trend: {
-      value: 8,
-      direction: "up",
+      change: 8,
       label: "this week",
     },
   },
@@ -21,8 +19,7 @@ export const dashboardStats = {
   users: {
     value: 1240,
     trend: {
-      value: 5,
-      direction: "up",
+      change: 5,
       label: "growth",
     },
   },

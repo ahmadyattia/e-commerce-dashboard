@@ -4,21 +4,30 @@ export const mapDashboardStats = (stats) => {
       title: "Revenue",
       value: `$${stats.revenue.value}`,
       icon: "💰",
-      trend: `↑ ${stats.revenue.trend.value}% ${stats.revenue.trend.label}`,
+      trend: {
+        change: `↑ ${stats.revenue.trend.change}%`,
+        label: `${stats.revenue.trend.label}`,
+      },
     },
 
     {
       title: "Orders",
       value: stats.orders.value,
       icon: "📦",
-      trend: `↑ ${stats.orders.trend.value}% ${stats.orders.trend.label}`,
+      trend: {
+        change: `↑ ${stats.orders.trend.change}%`,
+        label: `${stats.orders.trend.label}`,
+      },
     },
 
     {
       title: "Users",
       value: stats.users.value,
       icon: "👤",
-      trend: `↑ ${stats.users.trend.value}% ${stats.users.trend.label}`,
+      trend: {
+        change: `↑ ${stats.users.trend.change}%`,
+        label: `${stats.users.trend.label}`,
+      },
     },
 
     {
