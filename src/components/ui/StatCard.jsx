@@ -1,6 +1,6 @@
 import React from "react";
 
-const StatCard = ({ icon, title, value, change, label }) => {
+const StatCard = ({ icon, title, value, trendChange, trendLabel }) => {
   return (
     <div className="bg-white p-5 rounded-xl shadow-sm border hover:shadow-md transition">
       {/* Top row: icon + title */}
@@ -13,9 +13,9 @@ const StatCard = ({ icon, title, value, change, label }) => {
       <div className="mt-3 text-2xl font-bold text-gray-800">{value}</div>
 
       {/* Trend (optional) */}
-      {change && (
+      {trendChange && (
         <div className="mt-1 text-xs text-gray-500">
-          {change} {label}
+          {trendChange} {trendLabel}
         </div>
       )}
     </div>

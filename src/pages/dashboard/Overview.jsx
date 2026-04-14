@@ -20,11 +20,12 @@ const Overview = () => {
           return (
             <StatCard
               key={index}
-              title={stat.title}
-              value={stat.value}
-              icon={stat.icon}
-              change={stat.trend.change}
-              label={stat.trend.label}
+              //   title={stat.title}
+              //   value={stat.value}
+              //   icon={stat.icon}
+              //   change={stat.trendChange}
+              //   label={stat.trendLabel}
+              {...stat}
             />
           );
         })}
