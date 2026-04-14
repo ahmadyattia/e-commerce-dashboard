@@ -17,17 +17,7 @@ const Overview = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         {stats.map((stat, index) => {
-          return (
-            <StatCard
-              key={index}
-              //   title={stat.title}
-              //   value={stat.value}
-              //   icon={stat.icon}
-              //   change={stat.trendChange}
-              //   label={stat.trendLabel}
-              {...stat}
-            />
-          );
+          return <StatCard key={index} {...stat} />;
         })}
       </div>
 
