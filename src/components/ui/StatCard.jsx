@@ -12,7 +12,10 @@ const StatCard = ({ icon, title, value, trendChange, trendLabel }) => {
       </div>
 
       {/* Main value */}
-      <div className="mt-3 text-2xl font-bold text-gray-800">{value}</div>
+      <div className="mt-3 text-2xl font-bold text-gray-800">
+        {title === "Revenue" && <span>$</span>}
+        {value}
+      </div>
 
       {/* Trend (optional) */}
       {trendChange && (
