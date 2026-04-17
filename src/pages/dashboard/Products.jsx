@@ -1,16 +1,17 @@
 import ProductTable from "../../components/features/products/ProductTable";
-import { products } from "../../data/products";
+import { products as initialProducts } from "../../data/products";
 import productsMapper from "../../data/mappers/productsMapper";
+import { useState } from "react";
 
 const Products = () => {
-  const mappedProducts = productsMapper(products);
-  console.log(mappedProducts);
+  //   const mappedProducts = productsMapper(products);
+  const [products, setProducts] = useState(initialProducts);
 
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Products</h2>
       <div className="flex flex-col">
-        <ProductTable products={mappedProducts} />
+        <ProductTable products={products} />
         <button className="p-2 mt-2 bg-green-700 rounded-xl text-white self-end w-max">
           + Add Product
         </button>
