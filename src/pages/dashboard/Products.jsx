@@ -1,21 +1,66 @@
 import ProductTable from "../../components/features/products/ProductTable";
 import { products as initialProducts } from "../../data/products";
-import productsMapper from "../../data/mappers/productsMapper";
 import { useState } from "react";
+import Modal from "../../components/ui/Modal";
+import ProductForm from "../../components/features/products/ProductForm";
 
 const Products = () => {
-  //   const mappedProducts = productsMapper(products);
   const [products, setProducts] = useState(initialProducts);
+  const [isOpen, setIsOpen] = useState(false);
+  const [editingProduct, setEditingProduct] = useState(null);
+
+  const handleSubmit = (data) => {
+    if (editingProduct) {
+      // EDIT
+      setProducts((prev) =>
+        prev.map((p) => (p.id == editingProduct.id ? { ...p, ...data } : p)),
+      );
+    } else {
+      // ADD
+      const newProduct = {
+        ...data,
+      };
+      setProducts((prev) => [...prev, newProduct]);
+    }
+
+    setIsOpen(false);
+    setEditingProduct(null);
+  };
+
+  console.log("products", products);
+
+  // DELETE
+  const handleDelete = (id) => {
+    setProducts((prev) => prev.filter((p) => p.id !== id));
+  };
+
+  // OPEN EDIT
+  const handleEdit = (product) => {
+    setEditingProduct(product);
+    setIsOpen(true);
+  };
 
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Products</h2>
-      <div className="flex flex-col">
-        <ProductTable products={products} />
-        <button className="p-2 mt-2 bg-green-700 rounded-xl text-white self-end w-max">
-          + Add Product
-        </button>
-      </div>
+      <ProductTable
+        products={products}
+        onEdit={handleEdit}
+        onDelete={handleDelete}
+      />
+      <button
+        onClick={() => setIsOpen(true)}
+        className="px-4 py-2 mt-4 bg-black rounded text-white rounded"
+      >
+        + Add Product
+      </button>
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <h2 className="text-lg font-bond mb-4">
+          {editingProduct ? "Edit Product" : "Add Product"}
+        </h2>
+
+        <ProductForm onSubmit={handleSubmit} initialData={editingProduct} />
+      </Modal>
     </div>
   );
 };
