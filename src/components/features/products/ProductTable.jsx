@@ -4,16 +4,16 @@ const ProductTable = ({ products }) => {
   console.log(products);
   return (
     <div className="bg-white rounded-xl flex justify-center">
-      <table className="w-full border-separate border-spacing-0 border border-gray-300 rounded-xl">
+      <table className="w-full border-separate border-spacing-0 border border-gray-100 rounded-xl">
         <thead>
           <tr>
-            <th className="p-6 border-solid border-gray-300 border rounded-tl-xl">
+            <th className="p-6 border-solid border-gray-100 border rounded-tl-xl">
               Title
             </th>
-            <th className="p-6 border-solid border-gray-300 border">id</th>
-            <th className="p-6 border-solid border-gray-300 border">Price</th>
-            <th className="p-6 border-solid border-gray-300 border">Stock</th>
-            <th className="p-6 border-solid border-gray-300 border rounded-tr-xl">
+            <th className="p-6 border-solid border-gray-100 border">id</th>
+            <th className="p-6 border-solid border-gray-100 border">Price</th>
+            <th className="p-6 border-solid border-gray-100 border">Stock</th>
+            <th className="p-6 border-solid border-gray-100 border rounded-tr-xl">
               Status
             </th>
           </tr>
@@ -26,22 +26,22 @@ const ProductTable = ({ products }) => {
             return (
               <tr className="">
                 <td
-                  className={`p-6 text-center border-solid border-gray-300 border ${isLast && "rounded-bl-xl"}`}
+                  className={`p-6 text-center border-solid border-gray-100 border ${isLast && "rounded-bl-xl"}`}
                 >
                   <img src={product.image} alt={product.title} />
                   <span>{product.title}</span>
                 </td>
-                <td className="p-6 text-center border-solid border-gray-300 border">
+                <td className="p-6 text-center border-solid border-gray-100 border">
                   {product.id}
                 </td>
-                <td className="p-6 text-center border-solid border-gray-300 border">
+                <td className="p-6 text-center border-solid border-gray-100 border">
                   ${product.price}
                 </td>
-                <td className="p-6 text-center border-solid border-gray-300 border">
+                <td className="p-6 text-center border-solid border-gray-100 border">
                   {product.stock}
                 </td>
                 <td
-                  className={`p-6 text-center border-solid border-gray-300 border ${isLast && "rounded-br-xl"}`}
+                  className={`p-6 text-center border-solid border-gray-100 border ${isLast && "rounded-br-xl"}`}
                 >
                   {product.status}
                 </td>
