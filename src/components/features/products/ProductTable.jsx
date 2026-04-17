@@ -1,6 +1,6 @@
 // import { products } from "../../../data/products";
 
-const ProductTable = ({ products }) => {
+const ProductTable = ({ products, onEdit, onDelete }) => {
   console.log(products);
   return (
     <div className="bg-white rounded-xl flex justify-center">
@@ -15,6 +15,9 @@ const ProductTable = ({ products }) => {
             <th className="p-6 border-solid border-gray-100 border">Stock</th>
             <th className="p-6 border-solid border-gray-100 border rounded-tr-xl">
               Status
+            </th>
+            <th className="p-6 border-solid border-gray-100 border rounded-tr-xl">
+              Actions
             </th>
           </tr>
         </thead>
@@ -40,10 +43,24 @@ const ProductTable = ({ products }) => {
                 <td className="p-6 text-center border-solid border-gray-100 border">
                   {product.stock}
                 </td>
+                <td className="p-6 text-center border-solid border-gray-100 border">
+                  {product.status}
+                </td>
                 <td
                   className={`p-6 text-center border-solid border-gray-100 border ${isLast && "rounded-br-xl"}`}
                 >
-                  {product.status}
+                  <button
+                    onClick={() => onEdit(product)}
+                    className="px-4 py-2 m-1 bg-gray-200 rounded text-blue-600 text-xs"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => onDelete(product.id)}
+                    className="px-4 py-2 m-1 bg-gray-200 rounded text-red-500 text-xs"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             );
