@@ -14,11 +14,6 @@ const statusStyles = {
 
 const OrderStatusBadge = ({ status }) => {
   return (
-    // <span
-    //   className={`px-2 py-1 rounded-lg text-xs font-medium ${statusStyles[status]}`}
-    // >
-    //   {status}
-    // </span>
     <div>
       {status === "paid" || status === "unpaid" || status === "refunded" ? (
         <select
