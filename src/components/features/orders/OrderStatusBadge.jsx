@@ -1,7 +1,25 @@
 import React from "react";
 
-const OrderStatusBadge = () => {
-  return <div>OrderStatusBadge</div>;
+const statusStyles = {
+  pending: "bg-yellow-100 text-yellow-700",
+  processing: "bg-blue-100 text-blue-700",
+  shipped: "bg-purple-100 text-purple-700",
+  delivered: "bg-green-100 text-green-700",
+  cancelled: "bg-red-100 text-red-700",
+
+  paid: "bg-green-100 text-green-700",
+  unpaid: "bg-gray-100 text-gray-700",
+  refunded: "bg-red-100 text-red-700",
+};
+
+const OrderStatusBadge = ({ status }) => {
+  return (
+    <span
+      className={`px-2 py-1 rounded-lg text-xs font-medium ${statusStyles[status]}`}
+    >
+      {status}
+    </span>
+  );
 };
 
 export default OrderStatusBadge;
