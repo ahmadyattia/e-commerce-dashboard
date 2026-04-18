@@ -20,7 +20,7 @@ const OrderTable = () => {
         </thead>
         <tbody>
           {rows.map((row) => {
-            <OrderRow key={row.id} row={row} />;
+            return <OrderRow key={row.id} row={row} />;
           })}
         </tbody>
       </table>
