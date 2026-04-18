@@ -5,9 +5,9 @@ const OrderTable = () => {
   const rows = orders.map(mapOrderToRow);
 
   return (
-    <div>
-      <table>
-        <thead>
+    <div className="bg-white rounded-2xl shadow p-4">
+      <table className="w-full text-left">
+        <thead className="text-gray-500 text-sm">
           <tr>
             <th>Order Id</th>
             <th>Customer</th>
