@@ -1,5 +1,6 @@
 import { mapOrderToRow } from "../../../data/mappers/mapOrderToRow";
 import { orders } from "../../../data/orders";
+import OrderRow from "./OrderRow";
 
 const OrderTable = () => {
   const rows = orders.map(mapOrderToRow);
