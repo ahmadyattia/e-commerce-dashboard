@@ -1,4 +1,4 @@
-import React from "react";
+import OrderStatusBadge from "./OrderStatusBadge";
 
 const OrderRow = ({ row }) => {
   return (
