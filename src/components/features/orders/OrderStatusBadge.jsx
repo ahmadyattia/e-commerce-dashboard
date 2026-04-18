@@ -14,11 +14,33 @@ const statusStyles = {
 
 const OrderStatusBadge = ({ status }) => {
   return (
-    <span
-      className={`px-2 py-1 rounded-lg text-xs font-medium ${statusStyles[status]}`}
-    >
-      {status}
-    </span>
+    // <span
+    //   className={`px-2 py-1 rounded-lg text-xs font-medium ${statusStyles[status]}`}
+    // >
+    //   {status}
+    // </span>
+    <div>
+      {status === "paid" || status === "unpaid" || status === "refunded" ? (
+        <select
+          value={status}
+          className={`px-2 py-1 rounded-lg text-xs font-medium ${statusStyles[status]}`}
+        >
+          <option>paid</option>
+          <option>unpaid</option>
+          <option>refunded</option>
+        </select>
+      ) : (
+        <select
+          value={status}
+          className={`px-2 py-1 rounded-lg text-xs font-medium ${statusStyles[status]}`}
+        >
+          <option>pending</option>
+          <option>processing</option>
+          <option>shipped</option>
+          <option>delivered</option>
+        </select>
+      )}
+    </div>
   );
 };
 
