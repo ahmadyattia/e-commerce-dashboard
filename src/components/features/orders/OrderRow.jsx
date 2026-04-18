@@ -1,6 +1,6 @@
 import React from "react";
 
-const OrderRow = () => {
+const OrderRow = ({ row }) => {
   return <div>OrderRow</div>;
 };
 
