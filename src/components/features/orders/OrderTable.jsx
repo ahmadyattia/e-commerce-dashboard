@@ -1,6 +1,9 @@
-import React from "react";
+import { mapOrderToRow } from "../../../data/mappers/mapOrderToRow";
+import { orders } from "../../../data/orders";
 
 const OrderTable = () => {
+  const rows = orders.map(mapOrderToRow);
+
   return (
     <div>
       <table>
@@ -14,6 +17,11 @@ const OrderTable = () => {
             <th>Payment</th>
           </tr>
         </thead>
+        <tbody>
+          {rows.map((row) => {
+            <OrderRow key={row.id} row={row} />;
+          })}
+        </tbody>
       </table>
     </div>
   );
