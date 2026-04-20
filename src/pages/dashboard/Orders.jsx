@@ -8,12 +8,14 @@ const Orders = () => {
   console.log(loading);
   console.log(error);
 
-  console.log(orders);
+  // console.log(orders);
 
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Orders</h2>
-      <OrderTable />
+      {loading && <p>Loading orders...</p>}
+      {error && <p>Error loading orders.</p>}
+      <OrderTable orders={orders} />
     </div>
   );
 };

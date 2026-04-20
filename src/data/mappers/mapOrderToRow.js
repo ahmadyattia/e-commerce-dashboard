@@ -1,20 +1,13 @@
 export const mapOrderToRow = (order) => {
-  const total = order.items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-
   return {
-    id: order.id,
-    customerName: order.customer.name,
-    customerEmail: order.customer.email,
-    date: new Date(order.createdAt).toLocaleDateString(),
+    id: order.orderId,
+    customerName: order.shipping.fullName,
+    customerEmail: order.shipping.email,
+    date: new Date(order.date).toLocaleDateString(),
     total: {
-      value: total,
-      formatted: `$${total}`,
+      value: order.total,
+      formatted: `$${order.total}`,
     },
-    status: order.status,
-    paymentStatus: order.paymentStatus,
-    itemCount: order.items.length,
+    shippingMethod: order.shipping.shippingMethod,
   };
 };
