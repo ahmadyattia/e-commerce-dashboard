@@ -16,10 +16,6 @@ const OrderRow = ({ row, order }) => {
       </td>
       <td className="text-center py-3">{row.date}</td>
       <td className="font-medium text-center py-3">{row.total.formatted}</td>
-      <td className="py-3">
-        <OrderStatusBadge status={row.status} />
-        <OrderStatusBadge status={row.paymentStatus} type="payment" />
-      </td>
       <td className="py-3 text-center">
         <button
           onClick={() => setSelectedOrder(order)}
