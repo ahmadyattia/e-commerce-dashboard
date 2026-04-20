@@ -15,7 +15,12 @@ export const useOrders = () => {
       (snapshot) => {
         if (snapshot.exists()) {
           const allOrders = snapshot.val();
-          setOrders(allOrders);
+
+          if (typeof allOrders === "object" && allOrders !== null) {
+            const ordersValues = Object.values(allOrders);
+
+            setOrders(ordersValues);
+          }
           setLoading(false);
         }
       },
