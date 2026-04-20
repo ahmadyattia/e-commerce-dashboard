@@ -8,36 +8,35 @@ import SummaryCard from "../../ui/SummaryCard";
 const OrderDetailsModal = ({ order, isOpen, onClose }) => {
   if (!order) return null;
 
-  const data = mapOrderToDetails(order);
-  console.log(order);
+  const mappedOrder = mapOrderToDetails(order);
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className="space-y-6">
         {/* HEADER */}
         <div className="flex justify-between items-center">
-          <h2 className="text-xl font-semibold">Order {data.id}</h2>
-
-          <OrderStatusBadge status={data.status} />
+          <h2 className="text-xl font-semibold">Order {mappedOrder.id}</h2>
         </div>
 
         {/* SUMMARY */}
-        <div className="grid grid-cols-4 gap-4">
-          <SummaryCard title="Customer" value={data.customer.name} />
-          <SummaryCard title="Total" value={data.formattedTotal} />
-          <SummaryCard title="Payment" value={data.paymentStatus} />
-          <SummaryCard title="Date" value={data.date} />
+        <div className="flex flex-wrap gap-4">
+          <SummaryCard title="Customer Id" value={mappedOrder.customer.id} />
+          <SummaryCard
+            title="Customer Name"
+            value={mappedOrder.customer.name}
+          />
+
+          <SummaryCard title="Total" value={mappedOrder.formattedTotal} />
+          <SummaryCard title="Date" value={mappedOrder.date} />
         </div>
 
         {/* ITEMS */}
-        <OrderItemsTable items={data.items} />
+        <OrderItemsTable items={mappedOrder.items} />
 
         {/* SHIPPING */}
         <div className="bg-gray-50 p-4 rounded-xl">
           <h3 className="font-medium mb-2">Shipping</h3>
-          <p>
-            {data.shippingAddress.city} {data.shippingAddress.country}
-          </p>
+          <p>{mappedOrder.shippingMethod}</p>
         </div>
 
         <div className="flex justify-end gap-2">
