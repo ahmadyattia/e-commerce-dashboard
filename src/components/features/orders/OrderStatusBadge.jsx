@@ -14,7 +14,7 @@ const statusStyles = {
 
 const OrderStatusBadge = ({ status }) => {
   return (
-    <div>
+    <div className="text-center">
       {status === "paid" || status === "unpaid" || status === "refunded" ? (
         <select
           value={status}
