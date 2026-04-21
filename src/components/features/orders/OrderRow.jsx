@@ -6,7 +6,7 @@ const OrderRow = ({ row, order }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
 
   return (
-    <tr className="border-t hover:bg-gray-50">
+    <tr className="border-t hover:bg-gray-50 odd:bg-slate-50">
       <td className="py-3 font-medium">{row.id}</td>
       <td className="py-3">
         <div className="text-center">{row.customerName}</div>
@@ -19,7 +19,7 @@ const OrderRow = ({ row, order }) => {
       <td className="py-3 text-center">
         <button
           onClick={() => setSelectedOrder(order)}
-          className="text-blue-600 hover:underline"
+          className="text-blue-600 hover:underline cursor-pointer"
         >
           View
         </button>

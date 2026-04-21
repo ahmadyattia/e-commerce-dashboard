@@ -21,10 +21,11 @@ export const useOrders = () => {
 
             setOrders(ordersValues);
           }
-          setLoading(false);
         }
+        setLoading(false);
       },
       (err) => {
+        console.error(err);
         setError(`Error fetching orders from the database: ${err}`);
         setLoading(false);
       },

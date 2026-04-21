@@ -5,7 +5,6 @@ import OrderRow from "./OrderRow";
 const OrderTable = ({ orders }) => {
   if (!orders) return null;
 
-  console.log(orders);
   const rows = orders.map(mapOrderToRow);
 
   return (
