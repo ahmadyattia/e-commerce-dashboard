@@ -8,8 +8,8 @@ export const orders = [
       email: "ahmed@example.com",
     },
     items: [
-      { productId: "prod_1", name: "T-shirt", quantity: 2, price: 20 },
-      { productId: "prod_2", name: "Sneakers", quantity: 1, price: 80 },
+      { productId: "prod_1", title: "T-shirt", quantity: 2, price: 20 },
+      { productId: "prod_2", title: "Sneakers", quantity: 1, price: 80 },
     ],
     status: "processing", // pending | processing | shipped | delivered | cancelled
     paymentStatus: "paid", // paid | unpaid | refunded

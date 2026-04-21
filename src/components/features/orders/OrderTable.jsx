@@ -11,16 +11,16 @@ const OrderTable = () => {
         <thead className="text-gray-500 text-sm">
           <tr>
             <th>Order Id</th>
-            <th>Customer</th>
-            <th>Date</th>
-            <th>Total</th>
-            <th>Status</th>
-            <th>Payment</th>
+            <th className="text-center">Customer</th>
+            <th className="text-center">Date</th>
+            <th className="text-center">Total</th>
+            <th className="text-center">Status</th>
+            <th className="text-center">Payment</th>
           </tr>
         </thead>
         <tbody>
-          {rows.map((row) => {
-            return <OrderRow key={row.id} row={row} />;
+          {rows.map((row, i) => {
+            return <OrderRow key={row.id} row={row} order={orders[i]} />;
           })}
         </tbody>
       </table>
