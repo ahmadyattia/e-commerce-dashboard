@@ -1,4 +1,5 @@
 import ProductTable from "../../components/features/products/ProductTable";
+<<<<<<< HEAD
 import { products as initialProducts } from "../../data/products";
 import { useState } from "react";
 import Modal from "../../components/ui/Modal";
@@ -39,10 +40,19 @@ const Products = () => {
     setEditingProduct(product);
     setIsOpen(true);
   };
+=======
+import productsMapper from "../../data/mappers/productsMapper";
+import { useProducts } from "../../components/features/products/hooks/useProducts";
+
+const Products = () => {
+  const { products, error, loading } = useProducts();
+  const mappedProducts = productsMapper(products);
+>>>>>>> connect-firebase
 
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Products</h2>
+<<<<<<< HEAD
       <ProductTable
         products={products}
         onEdit={handleEdit}
@@ -61,6 +71,11 @@ const Products = () => {
 
         <ProductForm onSubmit={handleSubmit} initialData={editingProduct} />
       </Modal>
+=======
+      {loading && <p>Loading products...</p>}
+      {error && <p>Error while fetching products...</p>}
+      {products && <ProductTable products={mappedProducts} />}
+>>>>>>> connect-firebase
     </div>
   );
 };

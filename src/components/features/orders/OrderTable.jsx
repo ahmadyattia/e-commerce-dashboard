@@ -2,7 +2,9 @@ import { mapOrderToRow } from "../../../data/mappers/mapOrderToRow";
 import { orders } from "../../../data/orders";
 import OrderRow from "./OrderRow";
 
-const OrderTable = () => {
+const OrderTable = ({ orders }) => {
+  if (!orders) return null;
+
   const rows = orders.map(mapOrderToRow);
 
   return (
@@ -14,7 +16,6 @@ const OrderTable = () => {
             <th className="text-center">Customer</th>
             <th className="text-center">Date</th>
             <th className="text-center">Total</th>
-            <th className="text-center">Status</th>
             <th className="text-center">Payment</th>
           </tr>
         </thead>

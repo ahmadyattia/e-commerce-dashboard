@@ -1,5 +1,6 @@
 // import { products } from "../../../data/products";
 
+const ProductTable = ({ products }) => {
 const ProductTable = ({ products, onEdit, onDelete }) => {
   console.log(products);
   return (
@@ -7,7 +8,7 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
       <table className="w-full border-separate border-spacing-0 border border-gray-100 rounded-xl">
         <thead>
           <tr>
-            <th className="p-6 border-solid border-gray-100 border rounded-tl-xl">
+            <th className="p-6 text-left border-solid border-gray-100 border rounded-tl-xl">
               Title
             </th>
             <th className="p-6 border-solid border-gray-100 border">id</th>
@@ -27,11 +28,15 @@ const ProductTable = ({ products, onEdit, onDelete }) => {
             const isLast = index === products.length - 1;
 
             return (
-              <tr className="">
+              <tr className="odd:bg-slate-50">
                 <td
-                  className={`p-6 text-center border-solid border-gray-100 border ${isLast && "rounded-bl-xl"}`}
+                  className={`p-6 text-center flex items-center border-solid border-gray-100 border ${isLast && "rounded-bl-xl"}`}
                 >
-                  <img src={product.image} alt={product.title} />
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-1/4 aspect-square"
+                  />
                   <span>{product.title}</span>
                 </td>
                 <td className="p-6 text-center border-solid border-gray-100 border">
