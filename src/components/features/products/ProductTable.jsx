@@ -1,6 +1,5 @@
 // import { products } from "../../../data/products";
 
-const ProductTable = ({ products }) => {
 const ProductTable = ({ products, onEdit, onDelete }) => {
   console.log(products);
   return (
