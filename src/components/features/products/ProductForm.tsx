@@ -1,7 +1,8 @@
 import { Product } from "@/types/product";
+import { Image } from "@/types/image";
 import slugify from "../../../utils/slugify";
 import { useState, useEffect } from "react";
-import convertToBase64 from "@/utils/convertToBase64";
+import convertToBase64 from "../../../utils/convertToBase64.js";
 
 interface ProductFormProps {
   onSubmit: () => void;
@@ -21,6 +22,7 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
     description: "",
     slug: "",
   });
+  const [isConvertingImages, setIsConvertingImages] = useState<boolean>(false);
 
   useEffect(() => {
     if (editingProduct) {
@@ -47,22 +49,30 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
     };
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) return;
 
-    if (!file) return;
+    const filesArray = Array.from(e.target.files);
+    setIsConvertingImages(true);
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+    try {
+      const base64Strings: string[] = await Promise.all(
+        filesArray.map((file) => convertToBase64(file)),
+      );
 
-    reader.onload = () => {
-      const imageURL = reader.result as string; // image url in base64
+      const imagesObjectsArray: Image[] = base64Strings.map<Image>((string) => {
+        return { url: string };
+      });
 
       setForm({
         ...form,
-        images: [...form.images, { url: imageURL }],
+        images: [...form.images, ...imagesObjectsArray],
       });
-    };
+    } catch (error) {
+      console.error("Error converting images to base64 string:", error);
+    } finally {
+      setIsConvertingImages(false);
+    }
   };
 
   return (
@@ -103,7 +113,8 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
       <input
         name="image"
         type="file"
-        accept="image/png, image/jpeg, image/webp"
+        multiple
+        accept="image/*"
         onChange={handleImageChange}
       />
 
