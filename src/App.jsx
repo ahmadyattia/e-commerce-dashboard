@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
 import DashboardLayout from "./components/layout/DashboardLayout";
 import Overview from "./pages/dashboard/Overview";
-import Products from "./pages/dashboard/Products";
+import Products from "./pages/dashboard/Products.jsx";
 import Orders from "./pages/dashboard/Orders";
 import Users from "./pages/dashboard/Users";
 

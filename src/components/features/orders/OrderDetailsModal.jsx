@@ -1,6 +1,6 @@
 import React from "react";
 import { mapOrderToDetails } from "../../../data/mappers/mapOrderToDetails";
-import Modal from "../../ui/Modal";
+import Modal from "../../ui/Modal.js";
 import OrderStatusBadge from "./OrderStatusBadge";
 import OrderItemsTable from "./OrderItemsTable";
 import SummaryCard from "../../ui/SummaryCard";
