@@ -3,6 +3,7 @@ import { Image } from "@/types/image";
 import slugify from "../../../utils/slugify";
 import { useState, useEffect } from "react";
 import convertToBase64 from "../../../utils/convertToBase64.js";
+import { useCategories } from "./hooks/useCategories";
 
 interface ProductFormProps {
   onSubmit: () => void;
@@ -23,6 +24,7 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
     slug: "",
   });
   const [isConvertingImages, setIsConvertingImages] = useState<boolean>(false);
+  const { categories } = useCategories();
 
   useEffect(() => {
     if (editingProduct) {
@@ -75,6 +77,8 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
     }
   };
 
+  console.log(form);
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
       <input
@@ -98,24 +102,32 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
         onChange={handleChange}
         className="border p-2 rounded"
       />
-      <input
+      <select
         name="category"
-        placeholder="Product category"
-        value={form.category.name}
+        className="border p-2 rounded"
         onChange={(e) =>
           setForm({
             ...form,
             category: { ...form.category, name: e.target.value },
           })
         }
-        className="border p-2 rounded"
-      />
+        value={form.category.name}
+      >
+        <option value="" disabled>
+          select category
+        </option>
+        {categories.map((category) => {
+          return <option value={category.name}>{category.name}</option>;
+        })}
+      </select>
+
       <input
         name="image"
         type="file"
         multiple
         accept="image/*"
         onChange={handleImageChange}
+        className="border p-2 rounded"
       />
 
       <button type="submit" className="bg-black text-white py-2 rounded">
