@@ -1,4 +1,5 @@
 // import { products } from "../../../data/products";
+import { api } from "../../../services/api";
 import { Product } from "@/types/product";
 
 interface ProductTableProps {
@@ -8,6 +9,23 @@ interface ProductTableProps {
 }
 
 const ProductTable = ({ products, onEdit }: ProductTableProps) => {
+  const handleDeleteProduct = async (product: Product) => {
+    const confirmation = confirm(
+      `Are you sure you want to delete "${product.title}"?`,
+    );
+
+    if (!confirmation) return;
+
+    try {
+      await api.delete(`products/delete/${product.id}`);
+
+      alert(`Product "${product.title}" has been deleted.`);
+    } catch (error) {
+      console.error("Error deleting the product:", error);
+      alert("Error deleting the product...");
+    }
+  };
+
   return (
     <div className="bg-white rounded-xl flex justify-center">
       <table className="w-full border-separate border-spacing-0 border border-gray-100 rounded-xl">
@@ -55,12 +73,12 @@ const ProductTable = ({ products, onEdit }: ProductTableProps) => {
                   >
                     Edit
                   </button>
-                  {/* <button
-                    onClick={() => onDelete(product.id)}
+                  <button
+                    onClick={() => handleDeleteProduct(product)}
                     className="px-4 py-2 m-1 bg-gray-200 rounded text-red-500 text-xs"
                   >
                     Delete
-                  </button> */}
+                  </button>
                 </td>
               </tr>
             );
