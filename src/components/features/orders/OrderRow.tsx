@@ -17,7 +17,7 @@ const OrderRow = ({ order }: OrderRowProps) => {
         <div className="text-sm text-gray-500 text-center">{order.email}</div>
       </td>
       <td className="text-center py-3">{order.created_at}</td>
-      <td className="font-medium text-center py-3">{order.total}</td>
+      <td className="font-medium text-center py-3">${order.total}</td>
       <td className="py-3 text-center">
         <button
           onClick={() => setSelectedOrder(order)}
