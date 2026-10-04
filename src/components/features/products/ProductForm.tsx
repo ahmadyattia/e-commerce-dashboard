@@ -120,14 +120,25 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
     }
   };
 
+  const deleteImage = (image: Image) => {
+    if (!form.images.includes(image)) return;
+
+    const remainingImages = form.images.filter((existingImage) => {
+      return existingImage.url !== image.url;
+    });
+
+    setForm({
+      ...form,
+      images: [...remainingImages],
+    });
+  };
+
   const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const categoryId = e.target.value;
 
     const selectedCategory = categories.find(
       (category) => category.id === parseInt(categoryId, 10),
     ) as Category;
-
-    console.log(selectedCategory);
 
     setForm({
       ...form,
@@ -136,7 +147,7 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
   };
 
   console.log(form);
-  console.log(editingProduct);
+  // console.log(editingProduct);
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -151,7 +162,7 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
       <input
         name="price"
         placeholder="Product price"
-        value={form?.price}
+        value={form?.price === 0 ? "" : form?.price}
         onChange={handleChange}
         required
         className="border p-2 rounded"
@@ -169,7 +180,7 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
         className="border p-2 rounded"
         required
         onChange={handleCategoryChange}
-        value={form.category.id}
+        value={form.category.id ? form.category.id : ""}
       >
         <option value="" disabled>
           select category
@@ -179,14 +190,32 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
         })}
       </select>
 
+      <label htmlFor="images">Images:</label>
       <input
         name="image"
+        id="images"
         type="file"
         multiple
         accept="image/*"
         onChange={handleImageChange}
         className="border p-2 rounded"
       />
+      <div className="flex gap-2 overflow-auto">
+        {form.images &&
+          form.images.map((image) => {
+            return (
+              <div className="relative">
+                <img className="w-h h-25 object-cover" src={image.url} />
+                <span
+                  onClick={() => deleteImage(image)}
+                  className="inline-block absolute top-1 right-1 rounded-full w-6 h-6 text-center bg-red-500/60 cursor-pointer"
+                >
+                  X
+                </span>
+              </div>
+            );
+          })}
+      </div>
 
       <button
         type="submit"
