@@ -34,8 +34,11 @@ const ProductTable = ({ products, onEdit }: ProductTableProps) => {
             <th className="p-6 text-left border-solid border-gray-100 border rounded-tl-xl">
               Title
             </th>
-            <th className="p-6 border-solid border-gray-100 border">id</th>
             <th className="p-6 border-solid border-gray-100 border">Price</th>
+            <th className="p-6 border-solid border-gray-100 border">
+              Category
+            </th>
+            <th className="p-6 border-solid border-gray-100 border">id</th>
             <th className="p-6 border-solid border-gray-100 border rounded-tr-xl">
               Actions
             </th>
@@ -59,10 +62,13 @@ const ProductTable = ({ products, onEdit }: ProductTableProps) => {
                   <span>{product.title}</span>
                 </td>
                 <td className="p-6 text-center border-solid border-gray-100 border">
-                  {product.id}
+                  ${product.price}
                 </td>
                 <td className="p-6 text-center border-solid border-gray-100 border">
-                  ${product.price}
+                  {product.category.name}
+                </td>
+                <td className="p-6 text-center border-solid border-gray-100 border">
+                  {product.id}
                 </td>
                 <td
                   className={`p-6 text-center border-solid border-gray-100 border ${isLast && "rounded-br-xl"}`}
