@@ -13,6 +13,7 @@ const Products = () => {
   const onSubmit = () => {
     setEditingProduct(null);
     setIsOpen(false);
+    window.location.reload(); // refresh page on form submit
   };
 
   // OPEN EDIT
