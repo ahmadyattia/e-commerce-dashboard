@@ -7,21 +7,23 @@ export const useOrders = (pageNumber: number, pageSize: number) => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  async function fetchOrders() {
-    try {
-      const response = await api.get(
-        `/orders/all?page=${pageNumber}&size=${pageSize}`,
-      );
+  useEffect(() => {
+    async function fetchOrders() {
+      try {
+        const response = await api.get(
+          `/orders/all?page=${pageNumber}&size=${pageSize}`,
+        );
 
-      setOrders(response.data.orders);
-    } catch (error) {
-      setError("Error fetching products...");
-    } finally {
-      setLoading(false);
+        setOrders(response.data.orders);
+      } catch (error) {
+        setError("Error fetching products...");
+      } finally {
+        setLoading(false);
+      }
     }
-  }
 
-  fetchOrders();
+    fetchOrders();
+  }, []);
 
   return { orders, loading, error };
 };
