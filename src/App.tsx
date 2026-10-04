@@ -1,9 +1,9 @@
 import { Navigate, Route, Routes } from "react-router";
-import DashboardLayout from "./components/layout/DashboardLayout";
-import Overview from "./pages/dashboard/Overview";
-import Products from "./pages/dashboard/Products.jsx";
-import Orders from "./pages/dashboard/Orders";
-import Users from "./pages/dashboard/Users";
+import DashboardLayout from "./components/layout/DashboardLayout.jsx";
+import Overview from "./pages/dashboard/Overview.jsx";
+import Products from "./pages/dashboard/Products.js";
+import Orders from "./pages/dashboard/Orders.js";
+import Users from "./pages/dashboard/Users.jsx";
 
 const App = () => {
   return (
