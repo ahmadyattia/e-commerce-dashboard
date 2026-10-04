@@ -20,7 +20,7 @@ const OrderTable = ({ orders }: OrderTableProps) => {
             <th className="text-center">Customer</th>
             <th className="text-center">Date</th>
             <th className="text-center">Total</th>
-            <th className="text-center">Payment</th>
+            <th className="text-center">Details</th>
           </tr>
         </thead>
         <tbody>
