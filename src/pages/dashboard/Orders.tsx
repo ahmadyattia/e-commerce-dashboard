@@ -1,14 +1,8 @@
-import React from "react";
-import OrderTable from "../../components/features/orders/OrderTable";
+import OrderTable from "../../components/features/orders/OrderTable.jsx";
 import { useOrders } from "../../components/features/orders/hooks/useOrders";
 
 const Orders = () => {
-  const { orders, loading, error } = useOrders();
-
-  console.log(loading);
-  console.log(error);
-
-  // console.log(orders);
+  const { orders, loading, error } = useOrders(1, 10);
 
   return (
     <div>

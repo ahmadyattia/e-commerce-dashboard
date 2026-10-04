@@ -1,21 +1,23 @@
-import OrderDetailsModal from "./OrderDetailsModal";
-import OrderStatusBadge from "./OrderStatusBadge";
+import { Order } from "@/types/order";
+import OrderDetailsModal from "./OrderDetailsModal.jsx";
 import { useState } from "react";
 
-const OrderRow = ({ row, order }) => {
-  const [selectedOrder, setSelectedOrder] = useState(null);
+interface OrderRowProps {
+  order: Order;
+}
+
+const OrderRow = ({ order }: OrderRowProps) => {
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
 
   return (
     <tr className="border-t hover:bg-gray-50 odd:bg-slate-50">
-      <td className="py-3 font-medium">{row.id}</td>
+      <td className="py-3 font-medium">{order.id}</td>
       <td className="py-3">
-        <div className="text-center">{row.customerName}</div>
-        <div className="text-sm text-gray-500 text-center">
-          {row.customerEmail}
-        </div>
+        <div className="text-center">{order.full_name}</div>
+        <div className="text-sm text-gray-500 text-center">{order.email}</div>
       </td>
-      <td className="text-center py-3">{row.date}</td>
-      <td className="font-medium text-center py-3">{row.total.formatted}</td>
+      <td className="text-center py-3">{order.created_at}</td>
+      <td className="font-medium text-center py-3">{order.total}</td>
       <td className="py-3 text-center">
         <button
           onClick={() => setSelectedOrder(order)}

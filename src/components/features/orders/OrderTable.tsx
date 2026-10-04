@@ -1,18 +1,22 @@
-import { mapOrderToRow } from "../../../data/mappers/mapOrderToRow";
-import { orders } from "../../../data/orders";
-import OrderRow from "./OrderRow";
+import { Order } from "@/types/order";
+// import { mapOrderToRow } from "../../../data/mappers/mapOrderToRow";
+import OrderRow from "./OrderRow.jsx";
 
-const OrderTable = ({ orders }) => {
+interface OrderTableProps {
+  orders: Order[];
+}
+
+const OrderTable = ({ orders }: OrderTableProps) => {
   if (!orders) return null;
 
-  const rows = orders.map(mapOrderToRow);
+  // const rows = orders.map(mapOrderToRow);
 
   return (
     <div className="bg-white rounded-2xl shadow p-4">
       <table className="w-full text-left">
         <thead className="text-gray-500 text-sm">
           <tr>
-            <th>Order Id</th>
+            <th>Id</th>
             <th className="text-center">Customer</th>
             <th className="text-center">Date</th>
             <th className="text-center">Total</th>
@@ -20,8 +24,8 @@ const OrderTable = ({ orders }) => {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, i) => {
-            return <OrderRow key={row.id} row={row} order={orders[i]} />;
+          {orders.map((order) => {
+            return <OrderRow key={order.id} order={order} />;
           })}
         </tbody>
       </table>
