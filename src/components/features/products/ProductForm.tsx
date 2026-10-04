@@ -37,7 +37,8 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
       editingProduct.title === form.title &&
       editingProduct.description === form.description &&
       editingProduct.price === form.price &&
-      editingProduct.category.id === form.category.id
+      editingProduct.category.id === form.category.id &&
+      JSON.stringify(editingProduct.images) === JSON.stringify(form.images)
     ) {
       return true;
     }
