@@ -5,7 +5,7 @@ import SummaryCard from "../../ui/SummaryCard.jsx";
 import { Order } from "@/types/order.js";
 
 interface OrderDetailsModalProps {
-  order: Order;
+  order: Order | null;
   isOpen: boolean;
   onClose: () => void;
 }
