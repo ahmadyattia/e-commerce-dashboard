@@ -2,6 +2,7 @@ import { CartProduct, Product } from "./product.js";
 
 export interface Order {
   id?: string;
+  user_id?: string;
   date?: string;
   full_name: string;
   email: string;
