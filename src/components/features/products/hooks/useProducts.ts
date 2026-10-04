@@ -1,4 +1,4 @@
-// fetch products from firebase database
+// fetch products from database
 
 import { useState, useEffect } from "react";
 import { api } from "../../../../services/api";
