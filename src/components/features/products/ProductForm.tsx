@@ -196,6 +196,7 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
         name="image"
         id="images"
         type="file"
+        required={form.images.length === 0}
         multiple
         accept="image/*"
         onChange={handleImageChange}
