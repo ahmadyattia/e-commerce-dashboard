@@ -11,14 +11,9 @@ const Products = () => {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
 
   const onSubmit = () => {
-    setIsOpen(false);
     setEditingProduct(null);
+    setIsOpen(false);
   };
-
-  // DELETE
-  // const handleDelete = (id) => {
-  //   setProducts((prev) => prev.filter((p) => p.id !== id));
-  // };
 
   // OPEN EDIT
   const handleEdit = (product: Product) => {
@@ -26,13 +21,12 @@ const Products = () => {
     setIsOpen(true);
   };
 
-  // console.log(editingProduct);
+  if (loading) return <p>Loading products...</p>;
+  if (error) return <p>Error while fetching products...</p>;
 
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Products</h2>
-      {loading && <p>Loading products...</p>}
-      {error && <p>Error while fetching products...</p>}
       <button
         onClick={() => {
           setIsOpen(true);
