@@ -1,10 +1,11 @@
 import { Product } from "@/types/product";
 import { Image } from "@/types/image";
 import slugify from "../../../utils/slugify";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import convertToBase64 from "../../../utils/convertToBase64.js";
 import { useCategories } from "./hooks/useCategories";
 import { api } from "../../../services/api";
+import { Category } from "@/types/category";
 
 interface ProductFormProps {
   onSubmit: () => void;
@@ -28,6 +29,21 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
   const { categories } = useCategories();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+
+  const isSameForm = useMemo(() => {
+    if (!editingProduct) return false;
+
+    if (
+      editingProduct.title === form.title &&
+      editingProduct.description === form.description &&
+      editingProduct.price === form.price &&
+      editingProduct.category.id === form.category.id
+    ) {
+      return true;
+    }
+
+    return false;
+  }, [form, editingProduct]);
 
   useEffect(() => {
     if (editingProduct) {
@@ -104,7 +120,23 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
     }
   };
 
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const categoryId = e.target.value;
+
+    const selectedCategory = categories.find(
+      (category) => category.id === parseInt(categoryId, 10),
+    ) as Category;
+
+    console.log(selectedCategory);
+
+    setForm({
+      ...form,
+      category: selectedCategory,
+    });
+  };
+
   console.log(form);
+  console.log(editingProduct);
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -136,19 +168,14 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
         name="category"
         className="border p-2 rounded"
         required
-        onChange={(e) =>
-          setForm({
-            ...form,
-            category: { ...form.category, name: e.target.value },
-          })
-        }
-        value={form.category.name}
+        onChange={handleCategoryChange}
+        value={form.category.id}
       >
         <option value="" disabled>
           select category
         </option>
         {categories.map((category) => {
-          return <option value={category.name}>{category.name}</option>;
+          return <option value={category.id}>{category.name}</option>;
         })}
       </select>
 
@@ -161,7 +188,15 @@ function ProductForm({ onSubmit, editingProduct }: ProductFormProps) {
         className="border p-2 rounded"
       />
 
-      <button type="submit" className="bg-black text-white py-2 rounded">
+      <button
+        type="submit"
+        disabled={isSameForm}
+        className={
+          isSameForm
+            ? "bg-gray-500 text-white py-2 rounded"
+            : "bg-black text-white py-2 rounded"
+        }
+      >
         Save
       </button>
       {loading && <p>Loading...</p>}
