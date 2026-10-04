@@ -40,7 +40,12 @@ const OrderDetailsModal = ({
         {/* SHIPPING */}
         <div className="bg-gray-50 p-4 rounded-xl">
           <h3 className="font-medium mb-2">Shipping</h3>
-          <p>{order.shipping_method}</p>
+          <p className="text-gray-500">{order.shipping_method}</p>
+          {order.shipping_method === "delivery" && (
+            <p className="text-gray-500">
+              {order.city}, {order.state} {order.zipcode}
+            </p>
+          )}
         </div>
 
         <div className="flex justify-end gap-2">
