@@ -1,3 +1,3 @@
-const tableSize = 10;
+const tableSize = 5;
 
 export default tableSize;

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { api } from "../../../../services/api";
 import { type Product } from "../../../../types/product";
 import { useSearchParams } from "react-router";
-import tableSize from "@/data/pageSize";
+import tableSize from "@/data/tableSize";
 
 export const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([]);
