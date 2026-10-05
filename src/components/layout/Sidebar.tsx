@@ -4,7 +4,7 @@ import { Link } from "react-router";
 const Sidebar = () => {
   return (
     <div className="w-64 bg-white shadow-md">
-      <div className="p-6 text-xl font-bold">MyStore</div>
+      <div className="p-6 text-xl font-bold">Shop Site</div>
 
       <nav className="flex flex-col gap-2 px-4">
         <Link
