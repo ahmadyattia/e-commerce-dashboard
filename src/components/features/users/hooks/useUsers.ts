@@ -1,17 +1,22 @@
 import { User } from "@/types/user";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router";
 import { api } from "../../../../services/api";
+import tableSize from "@/data/tableSize";
 
-export function useUsers(pageNumber: number, pageSize: number) {
+export function useUsers() {
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+
+  const [searchParams] = useSearchParams();
+  const pageNumber = searchParams.get("page") || "1";
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await api.get(
-          `/users/all?page=${pageNumber}&size=${pageSize}`,
+          `/users/all?page=${pageNumber}&size=${tableSize}`,
         );
 
         setUsers(response.data.users);
@@ -24,7 +29,7 @@ export function useUsers(pageNumber: number, pageSize: number) {
     };
 
     fetchUsers();
-  }, []);
+  }, [pageNumber]);
 
   return { users, error, loading };
 }
