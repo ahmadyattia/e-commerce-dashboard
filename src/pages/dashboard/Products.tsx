@@ -4,6 +4,7 @@ import { useState } from "react";
 import Modal from "../../components/ui/Modal.js";
 import ProductForm from "../../components/features/products/ProductForm.js";
 import { Product } from "@/types/product.js";
+import Pagination from "../../components/ui/Pagination.js";
 
 const Products = () => {
   const { products, error, loading } = useProducts();
@@ -37,7 +38,12 @@ const Products = () => {
       >
         + Add Product
       </button>
-      {products && <ProductTable products={products} onEdit={handleEdit} />}
+      {products && (
+        <div>
+          <ProductTable products={products} onEdit={handleEdit} />
+          <Pagination tableName="products" />
+        </div>
+      )}
 
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <h2 className="text-lg font-bond mb-4">
