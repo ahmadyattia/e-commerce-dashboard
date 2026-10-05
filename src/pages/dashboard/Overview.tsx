@@ -1,10 +1,18 @@
-import React from "react";
-import StatCard from "../../components/ui/StatCard";
-import { mapDashboardStats } from "../../data/mappers/dashboardMapper";
-import { dashboardStats } from "../../data/dashboard";
+import React, { useMemo } from "react";
+import StatCard from "../../components/ui/StatCard.jsx";
+import useRevenue from "../../components/features/dashboard-stats/hooks/useRevenue.js";
+import useOrdersCount from "../../components/features/dashboard-stats/hooks/useOrdersCount.js";
+import useProductsCount from "../../components/features/dashboard-stats/hooks/useProductsCount.js";
+import useUsersCount from "../../components/features/dashboard-stats/hooks/useUsersCount.js";
 
 const Overview = () => {
-  const stats = mapDashboardStats(dashboardStats);
+  // const stats = mapDashboardStats(dashboardStats);
+
+  const revenue = useRevenue();
+  const ordersCount = useOrdersCount();
+  const productsCount = useProductsCount();
+  const usersCount = useUsersCount();
+
   return (
     <div>
       {/* Header */}
@@ -16,9 +24,10 @@ const Overview = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        {stats.map((stat, index) => {
-          return <StatCard key={index} {...stat} />;
-        })}
+        {revenue && <StatCard {...revenue} />}
+        {ordersCount && <StatCard {...ordersCount} />}
+        {productsCount && <StatCard {...productsCount} />}
+        {usersCount && <StatCard {...usersCount} />}
       </div>
 
       {/* Chart */}

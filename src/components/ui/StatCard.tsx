@@ -1,8 +1,23 @@
 import React from "react";
 
-const StatCard = ({ icon, title, value, trendChange, trendLabel }) => {
-  const isUp = trendChange > 0;
-  const isDown = trendChange < 0;
+interface StatCardProps {
+  icon?: string;
+  title?: string;
+  value?: number;
+  trendChange?: number;
+  trendLabel?: string;
+}
+
+const StatCard = ({
+  icon,
+  title,
+  value,
+  trendChange,
+  trendLabel,
+}: StatCardProps) => {
+  // const isUp = trendChange > 0;
+  // const isDown = trendChange < 0;
+
   return (
     <div className="bg-white p-5 rounded-xl shadow-sm border hover:shadow-md transition">
       {/* Top row: icon + title */}
@@ -20,8 +35,8 @@ const StatCard = ({ icon, title, value, trendChange, trendLabel }) => {
       {/* Trend (optional) */}
       {trendChange && (
         <div className="mt-1 text-xs text-gray-500">
-          {isUp && <span className="text-green-600">↑</span>}{" "}
-          {isDown && <span className="text-red-600">↓</span>}
+          {/* {isUp && <span className="text-green-600">↑</span>}{" "}
+          {isDown && <span className="text-red-600">↓</span>} */}
           {trendChange} {trendLabel}
         </div>
       )}
