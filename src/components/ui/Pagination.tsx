@@ -1,7 +1,7 @@
 import { api } from "../../services/api";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import tableSize from "@/data/pageSize";
+import tableSize from "@/data/tableSize";
 
 interface PaginationProps {
   tableName: "users" | "products" | "orders";
