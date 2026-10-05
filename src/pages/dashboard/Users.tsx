@@ -1,5 +1,5 @@
-import UsersTable from "@/components/features/users/UsersTable";
-import { useUsers } from "@/components/features/users/hooks/useUsers";
+import UsersTable from "../../components/features/users/UsersTable";
+import { useUsers } from "../../components/features/users/hooks/useUsers.js";
 
 const Users = () => {
   const { users, loading, error } = useUsers(1, 3);
