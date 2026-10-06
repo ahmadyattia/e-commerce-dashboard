@@ -29,7 +29,7 @@ const StatCard = ({
       {/* Main value */}
       <div className="mt-3 text-2xl font-bold text-gray-800">
         {title === "Revenue" && <span>$</span>}
-        {value}
+        {value ? value : <span className="invisible">placeholder</span>}
       </div>
 
       {/* Trend (optional) */}

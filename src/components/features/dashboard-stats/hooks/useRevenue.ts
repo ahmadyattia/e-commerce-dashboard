@@ -1,14 +1,8 @@
 import { api } from "../../../../services/api";
 import { useEffect, useState } from "react";
 
-interface Stat {
-  title: string;
-  value: number;
-  icon: string;
-}
-
 export default function useRevenue() {
-  const [revenue, setRevenue] = useState<Stat | null>(null);
+  const [revenue, setRevenue] = useState<number | undefined>(undefined);
 
   useEffect(() => {
     const fetchRevenue = async () => {
@@ -17,7 +11,7 @@ export default function useRevenue() {
 
         const revenue: number = response.data.revenue;
 
-        setRevenue({ title: "Revenue", value: revenue, icon: "💰" });
+        setRevenue(revenue);
       } catch (error) {
         console.error("Error fetching revenue data:", error);
       }

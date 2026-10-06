@@ -1,14 +1,10 @@
 import { api } from "../../../../services/api";
 import { useEffect, useState } from "react";
 
-interface Stat {
-  title: string;
-  value: number;
-  icon: string;
-}
-
 export default function useProductsCount() {
-  const [ProductsCount, setProductsCount] = useState<Stat | null>(null);
+  const [ProductsCount, setProductsCount] = useState<number | undefined>(
+    undefined,
+  );
 
   useEffect(() => {
     const fetchProductsCount = async () => {
@@ -17,7 +13,7 @@ export default function useProductsCount() {
 
         const count: number = response.data.count;
 
-        setProductsCount({ title: "Products", value: count, icon: "🛒" });
+        setProductsCount(count);
       } catch (error) {
         console.error("Error fetching products stats:", error);
       }

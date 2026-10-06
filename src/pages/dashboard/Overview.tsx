@@ -24,10 +24,10 @@ const Overview = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        {revenue && <StatCard {...revenue} />}
-        {ordersCount && <StatCard {...ordersCount} />}
-        {productsCount && <StatCard {...productsCount} />}
-        {usersCount && <StatCard {...usersCount} />}
+        {<StatCard title="Revenue" icon="💰" value={revenue} />}
+        {<StatCard title="Orders" icon="📦" value={ordersCount} />}
+        {<StatCard title="Products" icon="🛒" value={productsCount} />}
+        {<StatCard title="Users" icon="👤" value={usersCount} />}
       </div>
 
       {/* Chart */}
