@@ -27,7 +27,7 @@ const ProductTable = ({ products, onEdit }: ProductTableProps) => {
   };
 
   return (
-    <div className="bg-white rounded-xl flex justify-center">
+    <div className="bg-white rounded-xl flex overflow-auto">
       <table className="w-full border-separate border-spacing-0 border border-gray-100 rounded-xl">
         <thead>
           <tr>
@@ -52,14 +52,16 @@ const ProductTable = ({ products, onEdit }: ProductTableProps) => {
             return (
               <tr className="odd:bg-slate-50" key={product.id}>
                 <td
-                  className={`p-6 text-center flex items-center border-solid border-gray-100 border ${isLast && "rounded-bl-xl"}`}
+                  className={`p-6 border-solid border-gray-100 border ${isLast && "rounded-bl-xl"}`}
                 >
-                  <img
-                    src={product.images[0].url}
-                    alt={product.title}
-                    className="w-1/4 aspect-square"
-                  />
-                  <span>{product.title}</span>
+                  <div className="flex items-center gap-2">
+                    <img
+                      src={product.images[0].url}
+                      alt={product.title}
+                      className="w-1/4 min-w-20 aspect-square rounded-lg object-cover"
+                    />
+                    <span>{product.title}</span>
+                  </div>
                 </td>
                 <td className="p-6 text-center border-solid border-gray-100 border">
                   ${product.price}
@@ -73,18 +75,20 @@ const ProductTable = ({ products, onEdit }: ProductTableProps) => {
                 <td
                   className={`p-6 text-center border-solid border-gray-100 border ${isLast && "rounded-br-xl"}`}
                 >
-                  <button
-                    onClick={() => onEdit(product)}
-                    className="px-4 py-2 m-1 bg-gray-200 rounded text-blue-600 text-xs"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => handleDeleteProduct(product)}
-                    className="px-4 py-2 m-1 bg-gray-200 rounded text-red-500 text-xs"
-                  >
-                    Delete
-                  </button>
+                  <div className="flex flex-col">
+                    <button
+                      onClick={() => onEdit(product)}
+                      className="px-4 py-2 m-1 bg-gray-200 rounded text-blue-600 text-xs"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDeleteProduct(product)}
+                      className="px-4 py-2 m-1 bg-gray-200 rounded text-red-500 text-xs"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             );
