@@ -1,10 +1,19 @@
 import React from "react";
 import { Link } from "react-router";
+import { useState } from "react";
 
-const Sidebar = () => {
+interface SidebarProps {
+  isSidebarOpen: boolean;
+}
+
+const Sidebar = ({ isSidebarOpen }: SidebarProps) => {
   return (
-    <div className="w-64 bg-white shadow-md">
-      <div className="p-6 text-xl font-bold">Shop Site</div>
+    <div
+      className={`bg-white shadow-md ${isSidebarOpen && "w-64 transition-all duration-300"} ${!isSidebarOpen && "w-0 overflow-hidden transition-all duration-300"}`}
+    >
+      <div className="flex justify-between">
+        <div className="p-4 text-xl font-bold">Shop Site</div>
+      </div>
 
       <nav className="flex flex-col gap-2 px-4">
         <Link
