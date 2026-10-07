@@ -1,3 +1,5 @@
+import { api } from "@/services/api";
+import { useEffect, useState } from "react";
 import {
   LineChart,
   Line,
@@ -9,20 +11,39 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
+interface MonthlyRevenue {
+  month: string;
+  revenue: number;
+}
+
 const AnalyticsChart = () => {
-  const data = [
-    { month: "Jan", sales: 4000, profit: 2400 },
-    { month: "Feb", sales: 3000, profit: 1398 },
-    { month: "Mar", sales: 2000, profit: 5400 },
-    { month: "Apr", sales: 2780, profit: 3908 },
-    { month: "May", sales: 1890, profit: 4800 },
-  ];
+  const [monthlyRevenue, setMonthlyRevenue] = useState<MonthlyRevenue[]>([]);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // fetch monthly revenue (last 6 months)
+    async function fetchMonthlyRevenue() {
+      setError(null);
+      try {
+        const response = await api.get("/orders/revenue/monthly");
+
+        const data = response.data.monthlyRevenue;
+        setMonthlyRevenue(data);
+      } catch (error) {
+        setError("Error fetching data");
+      }
+    }
+
+    fetchMonthlyRevenue();
+  }, []);
+
+  if (error) return <p className="text-red-500">{error}</p>;
 
   return (
     <div className="w-full h-full bg-white p-4 rounded-xl shadow-sm border border-gray-100">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart
-          data={data}
+          data={monthlyRevenue}
           margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
         >
           {/* Subtle grid lines background */}
@@ -39,16 +60,10 @@ const AnalyticsChart = () => {
           {/* Data Line Lines matching your object keys */}
           <Line
             type="monotone"
-            dataKey="sales"
+            dataKey="revenue"
             stroke="#4f46e5"
             strokeWidth={2}
             activeDot={{ r: 8 }}
-          />
-          <Line
-            type="monotone"
-            dataKey="profit"
-            stroke="#10b981"
-            strokeWidth={2}
           />
         </LineChart>
       </ResponsiveContainer>
