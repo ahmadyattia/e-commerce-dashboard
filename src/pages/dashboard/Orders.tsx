@@ -6,7 +6,7 @@ const Orders = () => {
   const { orders, loading, error } = useOrders();
 
   if (loading) return <p>Loading orders...</p>;
-  if (error) return <p>Error loading orders.</p>;
+  if (error) return <p className="text-red-500">Error fetching orders...</p>;
 
   return (
     <div>

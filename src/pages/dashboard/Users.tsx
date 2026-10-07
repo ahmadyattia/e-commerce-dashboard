@@ -6,7 +6,7 @@ const Users = () => {
   const { users, loading, error } = useUsers();
 
   if (loading) return <p>Loading users...</p>;
-  if (error) return <p>Error loading users...</p>;
+  if (error) return <p className="text-red-500">Error fetching users...</p>;
 
   return (
     <div>

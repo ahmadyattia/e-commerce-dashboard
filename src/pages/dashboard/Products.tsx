@@ -24,7 +24,7 @@ const Products = () => {
   };
 
   if (loading) return <p>Loading products...</p>;
-  if (error) return <p>Error while fetching products...</p>;
+  if (error) return <p className="text-red-500">Error fetching products...</p>;
 
   return (
     <div>
