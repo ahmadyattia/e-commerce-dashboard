@@ -4,6 +4,7 @@ import useRevenue from "../../components/features/overview/hooks/useRevenue.js";
 import useOrdersCount from "../../components/features/overview/hooks/useOrdersCount.js";
 import useProductsCount from "../../components/features/overview/hooks/useProductsCount.js";
 import useUsersCount from "../../components/features/overview/hooks/useUsersCount.js";
+import AnalyticsChart from "@/components/features/overview/AnalyticsChart.js";
 
 const Overview = () => {
   // const stats = mapDashboardStats(dashboardStats);
@@ -33,8 +34,8 @@ const Overview = () => {
       {/* Chart */}
       <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm mb-6">
         <h2 className="font-semibold mb-4">Sales Overview</h2>
-        <div className="h-64 flex items-center justify-center text-gray-400">
-          Chart goes here
+        <div className="h-100 flex items-center justify-center text-gray-400">
+          <AnalyticsChart />
         </div>
       </div>
 
