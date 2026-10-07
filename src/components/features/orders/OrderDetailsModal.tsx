@@ -30,8 +30,12 @@ const OrderDetailsModal = ({
           <SummaryCard title="Customer Name" value={order.full_name} />
 
           <SummaryCard title="Total" value={`$${order.total}`} />
-          <SummaryCard title="Date" value={order.created_at} />
-          <SummaryCard title="Customer id" value={order.user_id} />
+          {order.created_at && (
+            <SummaryCard title="Date" value={order.created_at} />
+          )}
+          {order.user_id && (
+            <SummaryCard title="Customer id" value={order.user_id} />
+          )}
         </div>
 
         {/* ITEMS */}
