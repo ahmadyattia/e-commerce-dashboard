@@ -12,15 +12,15 @@ const OrderTable = ({ orders }: OrderTableProps) => {
   // const rows = orders.map(mapOrderToRow);
 
   return (
-    <div className="bg-white rounded-2xl shadow p-4">
+    <div className="bg-white rounded-2xl shadow p-4 overflow-auto">
       <table className="w-full text-left">
         <thead className="text-gray-500 text-sm">
           <tr>
-            <th>Id</th>
-            <th className="text-center">Customer</th>
-            <th className="text-center">Date</th>
-            <th className="text-center">Total</th>
-            <th className="text-center">Details</th>
+            <th className="p-3">Id</th>
+            <th className="p-3 text-center">Customer</th>
+            <th className="p-3 text-center">Date</th>
+            <th className="p-3 text-center">Total</th>
+            <th className="p-3 text-center">Details</th>
           </tr>
         </thead>
         <tbody>
