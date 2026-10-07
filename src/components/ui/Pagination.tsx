@@ -51,8 +51,8 @@ const Pagination = ({ tableName }: PaginationProps) => {
 
   const handleClick = () => {};
 
-  if (loading) return <p>Loading pagination...</p>;
-  if (error) return <p>{error}</p>;
+  if (loading) return <p className="text-center m-5">Loading pagination....</p>;
+  if (error) return <p className="text-center m-5">{error}</p>;
 
   return (
     <div className="text-center m-5">
