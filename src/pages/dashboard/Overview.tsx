@@ -1,9 +1,9 @@
 import React, { useMemo } from "react";
 import StatCard from "../../components/ui/StatCard.jsx";
-import useRevenue from "../../components/features/dashboard-stats/hooks/useRevenue.js";
-import useOrdersCount from "../../components/features/dashboard-stats/hooks/useOrdersCount.js";
-import useProductsCount from "../../components/features/dashboard-stats/hooks/useProductsCount.js";
-import useUsersCount from "../../components/features/dashboard-stats/hooks/useUsersCount.js";
+import useRevenue from "../../components/features/overview/hooks/useRevenue.js";
+import useOrdersCount from "../../components/features/overview/hooks/useOrdersCount.js";
+import useProductsCount from "../../components/features/overview/hooks/useProductsCount.js";
+import useUsersCount from "../../components/features/overview/hooks/useUsersCount.js";
 
 const Overview = () => {
   // const stats = mapDashboardStats(dashboardStats);
