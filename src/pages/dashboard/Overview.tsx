@@ -1,4 +1,3 @@
-import React, { useMemo } from "react";
 import StatCard from "../../components/ui/StatCard.jsx";
 import useRevenue from "../../components/features/overview/hooks/useRevenue.js";
 import useOrdersCount from "../../components/features/overview/hooks/useOrdersCount.js";
@@ -7,8 +6,6 @@ import useUsersCount from "../../components/features/overview/hooks/useUsersCoun
 import AnalyticsChart from "@/components/features/overview/AnalyticsChart.js";
 
 const Overview = () => {
-  // const stats = mapDashboardStats(dashboardStats);
-
   const revenue = useRevenue();
   const ordersCount = useOrdersCount();
   const productsCount = useProductsCount();
@@ -23,8 +20,7 @@ const Overview = () => {
           Here’s what’s happening with your store today.
         </p>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+      <div className="flex flex-wrap gap-4 mb-6">
         {<StatCard title="Revenue" icon="💰" value={revenue} />}
         {<StatCard title="Orders" icon="📦" value={ordersCount} />}
         {<StatCard title="Products" icon="🛒" value={productsCount} />}
