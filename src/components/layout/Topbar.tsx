@@ -16,7 +16,7 @@ const Topbar = ({ isSidebarOpen, setIsSidebarOpen }: TopbarProps) => {
               ? "/src/assets/icons/close_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg"
               : "/src/assets/icons/menu_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg"
           }
-          className="w-8"
+          className="w-8 cursor-pointer"
         />
         <h1 className="text-lg font-semibold">Dashboard</h1>
       </div>

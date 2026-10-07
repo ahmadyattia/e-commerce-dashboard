@@ -4,7 +4,7 @@ import { Outlet } from "react-router";
 import { useState } from "react";
 
 const DashboardLayout = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <div className="flex h-screen bg-gray-100">
