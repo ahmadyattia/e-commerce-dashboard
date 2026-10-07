@@ -1,16 +1,8 @@
-import StatCard from "../../components/ui/StatCard.jsx";
-import useRevenue from "../../components/features/overview/hooks/useRevenue.js";
-import useOrdersCount from "../../components/features/overview/hooks/useOrdersCount.js";
-import useProductsCount from "../../components/features/overview/hooks/useProductsCount.js";
-import useUsersCount from "../../components/features/overview/hooks/useUsersCount.js";
 import AnalyticsChart from "@/components/features/overview/AnalyticsChart.js";
 
-const Overview = () => {
-  const revenue = useRevenue();
-  const ordersCount = useOrdersCount();
-  const productsCount = useProductsCount();
-  const usersCount = useUsersCount();
+import StatCards from "@/components/features/overview/StatCards.js";
 
+const Overview = () => {
   return (
     <div>
       {/* Header */}
@@ -20,12 +12,7 @@ const Overview = () => {
           Here’s what’s happening with your store today.
         </p>
       </div>
-      <div className="flex flex-wrap gap-4 mb-6">
-        {<StatCard title="Revenue" icon="💰" value={revenue} />}
-        {<StatCard title="Orders" icon="📦" value={ordersCount} />}
-        {<StatCard title="Products" icon="🛒" value={productsCount} />}
-        {<StatCard title="Users" icon="👤" value={usersCount} />}
-      </div>
+      <StatCards />
 
       {/* Chart */}
       <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm mb-6">

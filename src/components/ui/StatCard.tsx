@@ -2,9 +2,10 @@ interface StatCardProps {
   icon?: string;
   title?: string;
   value?: number;
+  error?: string | null;
 }
 
-const StatCard = ({ icon, title, value }: StatCardProps) => {
+const StatCard = ({ icon, title, value, error }: StatCardProps) => {
   return (
     <div className="w-max bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition">
       {/* Top row: icon + title */}
@@ -12,6 +13,8 @@ const StatCard = ({ icon, title, value }: StatCardProps) => {
         <span className="text-lg">{icon}</span>
         <span>{title}</span>
       </div>
+
+      {error && <p className="text-2xl mt-3 text-red-500">{error}</p>}
 
       {/* Main value */}
       <div className="mt-3 text-gray-800">
