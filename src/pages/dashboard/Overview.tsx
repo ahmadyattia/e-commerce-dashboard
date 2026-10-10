@@ -21,12 +21,6 @@ const Overview = () => {
           <AnalyticsChart />
         </div>
       </div>
-
-      {/* Recent Orders */}
-      <div className="bg-white p-6 rounded-xl shadow-sm">
-        <h2 className="font-semibold mb-4">Recent Orders</h2>
-        {/* <RecentOrders /> */}
-      </div>
     </div>
   );
 };
