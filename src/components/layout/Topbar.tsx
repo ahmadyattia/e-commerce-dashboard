@@ -1,4 +1,6 @@
 import React from "react";
+import closeIcon from "../../assets/icons/close_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
+import menuIcon from "../../assets/icons/menu_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
 
 interface TopbarProps {
   isSidebarOpen: boolean;
@@ -11,11 +13,7 @@ const Topbar = ({ isSidebarOpen, setIsSidebarOpen }: TopbarProps) => {
       <div className="flex gap-4 items-center">
         <img
           onClick={() => setIsSidebarOpen((prev) => !prev)}
-          src={
-            isSidebarOpen
-              ? "/src/assets/icons/close_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg"
-              : "/src/assets/icons/menu_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg"
-          }
+          src={isSidebarOpen ? closeIcon : menuIcon}
           className="w-8 cursor-pointer"
         />
         <h1 className="text-lg font-semibold">Dashboard</h1>
