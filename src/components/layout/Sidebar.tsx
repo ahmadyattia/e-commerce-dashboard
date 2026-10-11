@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router";
 import closeIcon from "../../assets/icons/close_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
+import useClickOutside from "@/hooks/useClickOutside";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -8,8 +9,13 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
+  // close menu when user clicks away
+  const sidebarRef = useRef(null);
+  useClickOutside(setIsSidebarOpen, sidebarRef);
+
   return (
     <div
+      ref={sidebarRef}
       className={`bg-white shadow-md w-64 h-full transition-all duration-300 fixed top-0 left-0 ${!isSidebarOpen && "-translate-x-full"}`}
     >
       <img
@@ -23,6 +29,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
         <Link
           to="/dashboard/overview"
           className="py-2 rounded hover:bg-gray-100"
+          onClick={() => setIsSidebarOpen(false)}
         >
           Overview
         </Link>
@@ -30,15 +37,24 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
         <Link
           to="/dashboard/products"
           className="py-2 rounded hover:bg-gray-100"
+          onClick={() => setIsSidebarOpen(false)}
         >
           Products
         </Link>
 
-        <Link to="/dashboard/orders" className="py-2 rounded hover:bg-gray-100">
+        <Link
+          to="/dashboard/orders"
+          className="py-2 rounded hover:bg-gray-100"
+          onClick={() => setIsSidebarOpen(false)}
+        >
           Orders
         </Link>
 
-        <Link to="/dashboard/users" className="py-2 rounded hover:bg-gray-100">
+        <Link
+          to="/dashboard/users"
+          className="py-2 rounded hover:bg-gray-100"
+          onClick={() => setIsSidebarOpen(false)}
+        >
           Users
         </Link>
       </nav>
