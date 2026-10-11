@@ -55,7 +55,7 @@ const Pagination = ({ tableName }: PaginationProps) => {
   if (error) return <p className="text-center m-5">{error}</p>;
 
   return (
-    <div className="text-center m-5">
+    <div className="text-center m-5 flex justify-center flex-wrap">
       {pageCount &&
         Array.from({ length: pageCount }, (_, i) => {
           return (
