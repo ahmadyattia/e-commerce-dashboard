@@ -7,9 +7,9 @@ interface StatCardProps {
 
 const StatCard = ({ icon, title, value, error }: StatCardProps) => {
   return (
-    <div className="w-max bg-white py-5 px-10 text-center rounded-xl shadow-sm hover:shadow-md transition">
+    <div className="w-max bg-white py-5 px-10 rounded-xl shadow-sm hover:shadow-md transition">
       {/* Top row: icon + title */}
-      <div className="flex items-center justify-center gap-1 text-gray-500 text-sm">
+      <div className="flex items-center gap-1 text-gray-500 text-sm">
         <img src={icon} />
         <span>{title}</span>
       </div>
