@@ -28,6 +28,10 @@ const StatCards = () => {
       setOrdersCountError(null);
       setProductsCountError(null);
       setUsersCountError(null);
+      setRevenue(undefined);
+      setordersCount(undefined);
+      setProductsCount(undefined);
+      setUsersCount(undefined);
 
       const [revenueRes, ordersCountRes, productsCountRes, usersCountRes] =
         await Promise.allSettled([
