@@ -16,7 +16,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
   return (
     <div
       ref={sidebarRef}
-      className={`bg-white shadow-md w-64 h-full transition-all duration-300 fixed top-0 left-0 ${!isSidebarOpen && "-translate-x-full"}`}
+      className={`bg-white shadow-md w-64 h-full transition-all duration-300 fixed top-0 left-0 ${!isSidebarOpen && "-translate-x-full"} z-999`}
     >
       <img
         onClick={() => setIsSidebarOpen(false)}
