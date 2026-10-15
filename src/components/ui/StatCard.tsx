@@ -10,7 +10,8 @@ const StatCard = ({ icon, title, value, error }: StatCardProps) => {
     <div className="w-max bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition">
       {/* Top row: icon + title */}
       <div className="flex items-center gap-2 text-gray-500 text-sm">
-        <span className="text-lg">{icon}</span>
+        {/* <span className="text-lg">{icon}</span> */}
+        <img src={icon} />
         <span>{title}</span>
       </div>
 

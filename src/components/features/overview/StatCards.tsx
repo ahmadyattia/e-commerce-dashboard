@@ -1,6 +1,10 @@
 import StatCard from "@/components/ui/StatCard.jsx";
 import { useEffect, useState } from "react";
 import { api } from "@/services/api.js";
+import revenueIcon from "@/assets/icons/money_bag_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
+import usersIcon from "@/assets/icons/person_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
+import productsIcon from "@/assets/icons/local_mall_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
+import ordersIcon from "@/assets/icons/orders_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
 
 const StatCards = () => {
   const [revenue, setRevenue] = useState<number | undefined>(undefined);
@@ -55,7 +59,7 @@ const StatCards = () => {
       {
         <StatCard
           title="Revenue"
-          icon="💰"
+          icon={revenueIcon}
           value={revenue}
           error={revenueCountError}
         />
@@ -63,7 +67,7 @@ const StatCards = () => {
       {
         <StatCard
           title="Orders"
-          icon="📦"
+          icon={ordersIcon}
           value={ordersCount}
           error={ordersCountError}
         />
@@ -71,7 +75,7 @@ const StatCards = () => {
       {
         <StatCard
           title="Products"
-          icon="🛒"
+          icon={productsIcon}
           value={productsCount}
           error={productsCountError}
         />
@@ -79,7 +83,7 @@ const StatCards = () => {
       {
         <StatCard
           title="Users"
-          icon="👤"
+          icon={usersIcon}
           value={usersCount}
           error={usersCountError}
         />

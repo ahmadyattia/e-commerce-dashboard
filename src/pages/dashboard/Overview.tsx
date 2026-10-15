@@ -1,13 +1,16 @@
 import AnalyticsChart from "@/components/features/overview/AnalyticsChart.js";
-
 import StatCards from "@/components/features/overview/StatCards.js";
+import wavingHand from "@/assets/icons/waving_hand_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
 
 const Overview = () => {
   return (
     <div>
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Welcome back 👋</h1>
+        <div className="flex gap-2">
+          <h1 className="text-2xl font-bold">Welcome back</h1>
+          <img src={wavingHand} />
+        </div>
         <p className="text-gray-500 text-sm">
           Here’s what’s happening with your store today.
         </p>
