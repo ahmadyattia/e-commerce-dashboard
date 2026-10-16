@@ -1,5 +1,6 @@
 import React from "react";
 import menuIcon from "../../assets/icons/menu_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
+import { Link } from "react-router";
 
 interface TopbarProps {
   setIsSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,6 +25,7 @@ const Topbar = ({ setIsSidebarOpen }: TopbarProps) => {
           className="w-8 h-8 rounded-full"
         />
       </div>
+      <Link to="login">Login</Link>
     </div>
   );
 };

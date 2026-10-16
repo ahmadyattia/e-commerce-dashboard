@@ -4,6 +4,7 @@ import Overview from "./pages/dashboard/Overview.jsx";
 import Products from "./pages/dashboard/Products.js";
 import Orders from "./pages/dashboard/Orders.js";
 import Users from "./pages/dashboard/Users.jsx";
+import Login from "./pages/dashboard/Login.jsx";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="products" element={<Products />} />
         <Route path="orders" element={<Orders />} />
         <Route path="users" element={<Users />} />
+        <Route path="login" element={<Login />} />
       </Route>
     </Routes>
   );
