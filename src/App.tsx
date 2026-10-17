@@ -5,6 +5,7 @@ import Products from "./pages/dashboard/Products.js";
 import Orders from "./pages/dashboard/Orders.js";
 import Users from "./pages/dashboard/Users.jsx";
 import Login from "./pages/dashboard/Login.jsx";
+import Signup from "./pages/dashboard/Signup.js";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="orders" element={<Orders />} />
         <Route path="users" element={<Users />} />
         <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
       </Route>
     </Routes>
   );

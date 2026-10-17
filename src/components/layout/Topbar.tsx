@@ -26,6 +26,7 @@ const Topbar = ({ setIsSidebarOpen }: TopbarProps) => {
         />
       </div>
       <Link to="login">Login</Link>
+      <Link to="signup">Sign up</Link>
     </div>
   );
 };
