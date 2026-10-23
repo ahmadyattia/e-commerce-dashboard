@@ -1,6 +1,5 @@
-import { api } from "@/services/api";
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useAuth } from "@/context/AuthContext";
 
 const Signup = () => {
   const [fName, setFName] = useState<string>("");
@@ -9,27 +8,15 @@ const Signup = () => {
   const [password, setPassword] = useState<string>("");
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const navigate = useNavigate();
+  const { loading, signup } = useAuth();
 
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
-    setError(null);
-    setLoading(true);
-    try {
-      await api.post("/auth/signup", {
-        fName,
-        lName,
-        email,
-        password,
-        isAdmin,
-      });
 
-      navigate("/dashboard/login");
+    try {
+      await signup(fName, lName, email, password, isAdmin);
     } catch (err: any) {
-      setError(err.response.data?.error);
-    } finally {
-      setLoading(false);
+      setError(err.message);
     }
   };
 

@@ -4,12 +4,18 @@ import { useState } from "react";
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const { loading, error, login } = useAuth();
+  const [error, setError] = useState<string | null>(null);
+
+  const { loading, login } = useAuth();
 
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
-    await login(email, password);
+    try {
+      await login(email, password);
+    } catch (err: any) {
+      setError(err.message);
+    }
   };
 
   return (
