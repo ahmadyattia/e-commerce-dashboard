@@ -1,23 +1,49 @@
+import { api } from "@/services/api";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const Signup = () => {
-  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
+  const [fName, setFName] = useState<string>("");
+  const [lName, setLName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const navigate = useNavigate();
 
-  console.log(firstName);
+  const handleSubmit = async (e: React.SubmitEvent) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+    try {
+      await api.post("/auth/signup", {
+        fName,
+        lName,
+        email,
+        password,
+        isAdmin,
+      });
+
+      navigate("/dashboard/login");
+    } catch (err: any) {
+      setError(err.response.data?.error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="flex justify-center items-center h-[80vh]">
-      <form className="w-[200px] max-w-full">
+      <form onSubmit={handleSubmit} className="w-[200px] max-w-full">
         <div className="flex flex-col gap-0.5 mb-1">
           <label htmlFor="firstName">First Name</label>
           <input
             id="firstName"
             type="text"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={fName}
+            onChange={(e) => setFName(e.target.value)}
+            required
             className="bg-[#aee9f5] rounded-[3px] p-0.75 focus:outline-[dodgerblue]"
           />
         </div>
@@ -26,18 +52,20 @@ const Signup = () => {
           <input
             id="lastName"
             type="text"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            value={lName}
+            onChange={(e) => setLName(e.target.value)}
+            required
             className="bg-[#aee9f5] rounded-[3px] p-0.75 focus:outline-[dodgerblue]"
           />
         </div>
         <div className="flex flex-col gap-0.5 mb-1">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="email">Email</label>
           <input
-            id="username"
+            id="email"
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
             className="bg-[#aee9f5] rounded-[3px] p-0.75 focus:outline-[dodgerblue]"
           />
         </div>
@@ -48,6 +76,7 @@ const Signup = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
             className="bg-[#aee9f5] rounded-[3px] p-0.75 focus:outline-[dodgerblue]"
           />
         </div>
@@ -55,9 +84,13 @@ const Signup = () => {
           <input type="checkbox" onChange={() => setIsAdmin((prev) => !prev)} />
           <label htmlFor="">Admin</label>
         </div>
-        <button className="w-full p-0.75 rounded-[3px] border border-[#aee9f5] text-center cursor-pointer hover:border-[dodgerblue]">
-          Submit
+        <button
+          type="submit"
+          className="w-full p-0.75 rounded-[3px] border border-[#aee9f5] text-center cursor-pointer hover:border-[dodgerblue]"
+        >
+          {loading ? "Submitting..." : "Submit"}
         </button>
+        {error && <p className="text-red-500">{error}</p>}
       </form>
     </div>
   );
