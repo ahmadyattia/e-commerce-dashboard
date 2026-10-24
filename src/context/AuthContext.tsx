@@ -81,9 +81,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       const response = await api.post("/auth/login", { email, password });
 
       setUser(response.data.user);
+      setCsrfToken(response.data.csrfToken);
       navigate("/dashboard");
     } catch (err: any) {
       setUser(null);
+      setCsrfToken(null);
       throw new Error(err.response.data?.error);
     } finally {
       setLoading(false);
