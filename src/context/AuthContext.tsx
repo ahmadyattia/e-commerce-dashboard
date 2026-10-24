@@ -14,7 +14,7 @@ interface AuthContextType {
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
   loading: boolean;
   login: (email: string, password: string) => Promise<void>;
-  // logout: () => Promise<void>;
+  logout: () => Promise<void>;
   signup: (
     fName: string,
     lName: string,
@@ -33,6 +33,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
 
+  // verify the session on reload
   useEffect(() => {
     const verifySession = async () => {
       try {
@@ -74,7 +75,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, [csrfToken]);
 
   const login = async (email: string, password: string) => {
-    // setError(null);
     setLoading(true);
 
     try {
@@ -93,7 +93,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     password: string,
     isAdmin: boolean,
   ) => {
-    // setError(null);
     setLoading(true);
 
     try {
@@ -113,8 +112,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
+  const logout = async () => {
+    try {
+      await api.post("/auth/logout");
+    } catch (error) {
+      console.error("Error signing out:", error);
+    } finally {
+      setUser(null);
+      setCsrfToken(null);
+      navigate("/login", { replace: true });
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ loading, user, setUser, login, signup }}>
+    <AuthContext.Provider
+      value={{ loading, user, setUser, login, signup, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
