@@ -78,8 +78,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
 
     try {
-      await api.post("/auth/login", { email, password });
+      const response = await api.post("/auth/login", { email, password });
+
+      setUser(response.data.user);
+      navigate("/dashboard");
     } catch (err: any) {
+      setUser(null);
       throw new Error(err.response.data?.error);
     } finally {
       setLoading(false);
@@ -120,7 +124,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } finally {
       setUser(null);
       setCsrfToken(null);
-      navigate("/login", { replace: true });
+      navigate("/dashboard/login", { replace: true });
     }
   };
 
