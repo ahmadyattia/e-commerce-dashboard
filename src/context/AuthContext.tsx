@@ -1,5 +1,11 @@
 import { User } from "@/types/user";
-import { useState, createContext, useContext, ReactNode } from "react";
+import {
+  useState,
+  createContext,
+  useContext,
+  ReactNode,
+  useEffect,
+} from "react";
 import { api } from "@/services/api";
 import { useNavigate } from "react-router";
 
@@ -23,8 +29,49 @@ export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [csrfToken, setCsrfToken] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const verifySession = async () => {
+      try {
+        const response = await api.get("/auth/me");
+
+        setUser(response.data.user);
+        setCsrfToken(response.data.csrfToken);
+      } catch (err) {
+        setUser(null);
+        setCsrfToken(null);
+      }
+    };
+
+    verifySession();
+  }, []);
+
+  useEffect(() => {
+    // run this interceptor on every state-changing request to inject the csrf token to the request headers
+    const interceptor = api.interceptors.request.use(
+      (config) => {
+        const method = config.method?.toLowerCase();
+
+        // only attach csrf token header to state-changing requests
+        if (
+          csrfToken &&
+          method &&
+          ["post", "put", "delete", "patch"].includes(method)
+        ) {
+          config.headers["X-CSRF-TOKEN"] = csrfToken;
+        }
+
+        return config;
+      },
+      (error) => Promise.reject(error),
+    );
+
+    // Eject on cleanup/re-render to prevent duplicate interceptors accumulating
+    return () => api.interceptors.request.eject(interceptor);
+  }, [csrfToken]);
 
   const login = async (email: string, password: string) => {
     // setError(null);
