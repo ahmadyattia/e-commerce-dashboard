@@ -34,7 +34,7 @@ const Products = () => {
           setIsOpen(true);
           setEditingProduct(null);
         }}
-        className="px-4 py-2 mt-4 mb-4 bg-black rounded-xl text-white rounded cursor-pointer"
+        className="px-4 py-2 mt-4 mb-4 bg-black rounded-sl text-white rounded cursor-pointer"
       >
         + Add Product
       </button>
