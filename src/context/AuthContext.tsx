@@ -110,7 +110,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setLoading(true);
 
     try {
-      await api.post("/auth/signup", {
+      await api.post("/auth/admin/signup", {
         fName,
         lName,
         email,
