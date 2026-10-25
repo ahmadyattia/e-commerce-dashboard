@@ -9,7 +9,7 @@ interface TopbarProps {
 }
 
 const Topbar = ({ setIsSidebarOpen }: TopbarProps) => {
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   return (
     <div className="bg-white shadow-sm px-6 py-4 flex justify-end items-center gap-6">
@@ -22,21 +22,16 @@ const Topbar = ({ setIsSidebarOpen }: TopbarProps) => {
         <h1 className="text-lg font-semibold">Dashboard</h1>
       </div>
 
-      {user && <Link to="signup">Signup</Link>}
       {!user && <Link to="login">Login</Link>}
-      {user && (
-        <p className="cursor-pointer" onClick={() => logout()}>
-          Logout
-        </p>
-      )}
+
       {user && (
         <div className="flex items-center gap-3">
+          <span className="text-sm">{user?.first_name}</span>
           <img
             src="https://i.pravatar.cc/40"
             alt="user"
             className="w-8 h-8 rounded-full"
           />
-          <span className="text-sm">{user?.first_name}</span>
         </div>
       )}
     </div>

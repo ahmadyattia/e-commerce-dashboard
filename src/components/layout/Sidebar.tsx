@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router";
 import closeIcon from "../../assets/icons/close_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
 import useClickOutside from "@/hooks/useClickOutside";
+import { useAuth } from "@/context/AuthContext";
 
 interface SidebarProps {
   isSidebarOpen: boolean;
@@ -12,6 +13,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
   // close menu when user clicks away
   const sidebarRef = useRef(null);
   useClickOutside(setIsSidebarOpen, sidebarRef);
+  const { user, logout } = useAuth();
 
   return (
     <div
@@ -57,6 +59,24 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
         >
           Users
         </Link>
+        <hr />
+        {user && (
+          <Link
+            to="/dashboard/signup"
+            className="py-2 rounded hover:bg-gray-100"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            Signup
+          </Link>
+        )}
+        {user && (
+          <p
+            className="py-2 rounded hover:bg-gray-100 cursor-pointer"
+            onClick={() => logout()}
+          >
+            Logout
+          </p>
+        )}
       </nav>
     </div>
   );
