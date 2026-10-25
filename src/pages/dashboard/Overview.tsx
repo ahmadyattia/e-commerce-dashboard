@@ -1,21 +1,12 @@
 import AnalyticsChart from "@/components/features/overview/AnalyticsChart.js";
 import StatCards from "@/components/features/overview/StatCards.js";
 import wavingHand from "@/assets/icons/waving_hand_20dp_000000_FILL0_wght400_GRAD0_opsz20.svg";
-import { useAuth } from "@/context/AuthContext.js";
 
 const Overview = () => {
-  const { user } = useAuth();
-
   return (
     <div>
       {/* Header */}
       <div className="mb-6">
-        {(!user || !user.is_admin) && (
-          <div className="w-full mb-4 bg-red-500 text-white py-5 px-10 rounded-xl shadow-sm hover:shadow-md transition">
-            <p>You must be logged in as an admin to access the site's data.</p>
-          </div>
-        )}
-
         <div className="flex gap-2">
           <h1 className="text-2xl font-bold">Welcome back</h1>
           <img src={wavingHand} />
