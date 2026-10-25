@@ -11,7 +11,7 @@ const Overview = () => {
       {/* Header */}
       <div className="mb-6">
         {(!user || !user.is_admin) && (
-          <div className="w-max mb-4 bg-red-500 text-white py-5 px-10 rounded-xl shadow-sm hover:shadow-md transition">
+          <div className="w-full mb-4 bg-red-500 text-white py-5 px-10 rounded-xl shadow-sm hover:shadow-md transition">
             <p>You must be logged in as an admin to access the site's data.</p>
           </div>
         )}
