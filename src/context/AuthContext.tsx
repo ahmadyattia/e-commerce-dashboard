@@ -80,7 +80,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await api.post("/auth/login", { email, password });
 
-      if (!response.data.user.isAdmin) {
+      if (!response.data.user.is_admin) {
         await api.post("/auth/logout");
         throw new Error("Must be an admin to login.");
       }
