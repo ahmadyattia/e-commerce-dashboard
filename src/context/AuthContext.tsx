@@ -80,13 +80,21 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const response = await api.post("/auth/login", { email, password });
 
+      if (!response.data.user.isAdmin) {
+        await api.post("/auth/logout");
+        throw new Error("Must be an admin to login.");
+      }
+
       setUser(response.data.user);
       setCsrfToken(response.data.csrfToken);
       navigate("/dashboard");
     } catch (err: any) {
       setUser(null);
       setCsrfToken(null);
-      throw new Error(err.response.data?.error);
+      if (err.response?.data?.error) {
+        throw new Error(err.response.data.error);
+      }
+      throw new Error(err.message);
     } finally {
       setLoading(false);
     }
