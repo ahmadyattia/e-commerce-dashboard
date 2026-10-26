@@ -13,6 +13,7 @@ const UsersTable = ({ users }: UsersTableProps) => {
           <th className="p-3">Last Name</th>
           <th className="p-3">Email</th>
           <th className="p-3">id</th>
+          <th className="p-3">Role</th>
         </thead>
         <tbody>
           {users.map((user) => {
@@ -22,6 +23,7 @@ const UsersTable = ({ users }: UsersTableProps) => {
                 <td className="p-3">{user.last_name}</td>
                 <td className="p-3">{user.email}</td>
                 <td className="p-3">{user.id}</td>
+                <td className="p-3">{user.is_admin ? "admin" : "customer"}</td>
               </tr>
             );
           })}
