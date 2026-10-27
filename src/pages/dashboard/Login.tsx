@@ -20,6 +20,10 @@ const Login = () => {
 
   return (
     <div className="flex flex-col justify-center items-center h-[80vh]">
+      <div className="m-4 mb-auto self-start">
+        <h1 className="text-2xl font-bold">Shop Site</h1>
+        <p className="mb-10 text-[8px]">dashboard</p>
+      </div>
       <h1 className="text-2xl font-bold mb-4 text-[#aee9f5]">Login</h1>
       <form onSubmit={handleSubmit} className="w-[200px] max-w-full">
         <div className="flex flex-col gap-0.5 mb-1">
