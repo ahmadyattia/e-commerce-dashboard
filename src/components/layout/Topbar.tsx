@@ -19,7 +19,10 @@ const Topbar = ({ setIsSidebarOpen }: TopbarProps) => {
           src={menuIcon}
           className="w-8 cursor-pointer"
         />
-        <h1 className="text-lg font-semibold">Dashboard</h1>
+        <div className="self-start">
+          <h1 className="text-2xl font-bold">Shop Site</h1>
+          <p className="text-[8px]">dashboard</p>
+        </div>
       </div>
 
       {!user && <Link to="login">Login</Link>}
