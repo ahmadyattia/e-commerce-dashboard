@@ -21,7 +21,7 @@ const Topbar = ({ setIsSidebarOpen }: TopbarProps) => {
         />
         <div className="self-start">
           <h1 className="text-2xl font-bold">Shop Site</h1>
-          <p className="text-[8px]">dashboard</p>
+          <p className="text-[0.60rem]">dashboard</p>
         </div>
       </div>
 

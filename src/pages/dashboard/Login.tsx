@@ -22,7 +22,7 @@ const Login = () => {
     <div>
       <div className="m-4">
         <h1 className="text-2xl font-bold">Shop Site</h1>
-        <p className="text-[8px]">dashboard</p>
+        <p className="text-[0.60rem]">dashboard</p>
       </div>
       <div className="flex flex-col justify-center items-center h-[80vh]">
         <h1 className="text-2xl font-bold mb-4 text-[#aee9f5]">Login</h1>

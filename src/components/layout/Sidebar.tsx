@@ -25,7 +25,10 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }: SidebarProps) => {
         src={closeIcon}
         className="absolute right-0 w-8 cursor-pointer ml-auto my-4 mx-6"
       />
-      <div className="p-4 text-xl font-bold">Shop Site</div>
+      <div className="m-4">
+        <h1 className="text-2xl font-bold">Shop Site</h1>
+        <p className="text-[0.60rem]">dashboard</p>
+      </div>
 
       <nav className="flex flex-col gap-2 px-4">
         <Link
