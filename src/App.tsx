@@ -8,6 +8,7 @@ import Login from "./pages/dashboard/Login.jsx";
 import Signup from "./pages/dashboard/Signup.js";
 import { AuthProvider } from "./context/AuthContext.js";
 import { AxiosInterceptorBridge } from "./hooks/AxiosInterceptorBridge.js";
+import ProtectedRoute from "./components/features/ProtectedRoute.js";
 
 const App = () => {
   return (
@@ -18,7 +19,14 @@ const App = () => {
             path="/"
             element={<Navigate to="/dashboard" replace />}
           ></Route>
-          <Route path="/dashboard" element={<DashboardLayout />}>
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <DashboardLayout />
+              </ProtectedRoute>
+            }
+          >
             <Route index element={<Navigate to="overview" replace />}></Route>
             /* default dashboard page */
             <Route path="overview" element={<Overview />} />
