@@ -8,13 +8,19 @@ const Signup = () => {
   const [password, setPassword] = useState<string>("");
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string>("");
   const { loading, signup } = useAuth();
 
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault();
 
+    setMessage("");
+    setError(null);
+
     try {
       await signup(fName, lName, email, password, isAdmin);
+
+      setMessage("User signed up successfully!");
     } catch (err: any) {
       setError(err.message);
     }
@@ -80,6 +86,7 @@ const Signup = () => {
           {loading ? "Submitting..." : "Submit"}
         </button>
         {error && <p className="text-red-500">{error}</p>}
+        {message && <p className="text-green-600">{message}</p>}
       </form>
     </div>
   );

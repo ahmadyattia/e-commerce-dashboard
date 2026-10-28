@@ -117,8 +117,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         password,
         isAdmin,
       });
-
-      navigate("/dashboard/login");
     } catch (err: any) {
       throw new Error(err.response.data?.error);
     } finally {
