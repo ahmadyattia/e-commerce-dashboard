@@ -5,6 +5,8 @@ import React, { useEffect, useRef } from "react";
 import { api } from "@/services/api";
 import { useAuth } from "@/context/AuthContext";
 
+let isLoggingOut = false; // to prevent multiple logout on multiple subsequent 401 responses
+
 export function AxiosInterceptorBridge({
   children,
 }: {
@@ -25,12 +27,18 @@ export function AxiosInterceptorBridge({
   useEffect(() => {
     const interceptor = api.interceptors.response.use(
       (response) => response,
-      (error) => {
+      async (error) => {
         // log out on intercepting status 401
-        if (error.response?.status === 401) {
+        if (error.response?.status === 401 && !isLoggingOut) {
           if (userRef.current) {
-            logoutRef.current();
+            // log out and alert only once
+            isLoggingOut = true;
+
+            await logoutRef.current();
             alert("Your session has expired.");
+
+            // reset the flag after the logout
+            isLoggingOut = false;
           }
         }
         return Promise.reject(error);
