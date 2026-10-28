@@ -1,20 +1,20 @@
-<<<<<<< HEAD
-# React + Vite
+E-commerce website for showcasing my skills as a web developer.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the admin dashboard for the front store "Shop Site" in the "shop-site-full-stack" repository. The backend API for this dashboard is in the repository mentioned. I highly encourage checking the other repository as well for the backend source code. 
 
-Currently, two official plugins are available:
+This app is written in React.js and TypeScript. It utilizes Axios HTTP client, React Router, React Context, and more. 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Dashboard URL: https://shop-site-dashboard.vercel.app (Deployed on Vercel)
+Front store URL: shop-site-with-backend-three.vercel.app (Deployed on Vercel)
+API URL: https://shop-site-with-backend.onrender.com/ (Deployed on Render)
 
-## React Compiler
+Render spins down the server after a period of inactivity. It can take up to 50 secs to spin up again.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The name of the website is "Shop Site". You can sign up and log into the front store, but you need to be an admin to login this dashboard. I'm providing admin credentials below. 
 
-## Expanding the ESLint configuration
+Admin credentials:
+email: admin@gmail.com
+password: Password123@
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
->>>>>>> 30eac57340cabc29480c08d4b5f34b726bff2bd9
-# e-commerce-dashboard
+Across the front store, admin dashboard, and API, I've implemented data validation, loading states, error states, pagination, breadcrumbs, SPA frontend architecture, MVC server architecture, CSS Modules, Tailwind styling, global and local state, environment variables, typing using TS, auth cookies, Json Web Tokens, handling response status codes, and more. 
+
